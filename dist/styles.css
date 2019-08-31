@@ -1,0 +1,1 @@
+body{margin:25px;background-color:#f0f0f0;font-family:arial,sans-serif;font-size:14px}h1{font-size:35px;font-weight:400;margin-top:5px}.someclass{color:red}#someid{color:green}
