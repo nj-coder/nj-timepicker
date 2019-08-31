@@ -20,5 +20,10 @@
   "bugs": {
     "url": "https://github.com/nj-coder/nj-timepicker/issues"
   },
-  "homepage": "https://github.com/nj-coder/nj-timepicker#readme"
+  "homepage": "https://github.com/nj-coder/nj-timepicker#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-sass": "^4.0.2"
+  }
 }
