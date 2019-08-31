@@ -3,6 +3,7 @@ const gulp = require('gulp');
 const sass = require('gulp-sass');
 const cleanCSS = require('gulp-clean-css');
 const concat = require('gulp-concat');
+const rename = require('gulp-rename');
 //const webpack = require('webpack');
 //const webpackStream = require('webpack-stream');
 //const babel = require('gulp-babel');
@@ -14,7 +15,9 @@ gulp.task('clean', require('del').bind(null, ['dist']));
 gulp.task('styles', function () {
     return gulp.src(['./src/**/*.scss'])
         .pipe(sass().on('error', sass.logError))
-        .pipe(concat(`styles.css`))
+        .pipe(concat(`style.css`))
+        .pipe(gulp.dest('dist'))
+        .pipe(rename(`style.min.css`))
         .pipe(cleanCSS({ compatibility: 'ie8' }))
         .pipe(gulp.dest('dist'));
 });
