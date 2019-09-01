@@ -32,22 +32,17 @@ gulp.task('babel', function () {
 });
 const webpackDev = require('./config/webpack.dev');
 const webpackProd = require('./config/webpack.prod');
-gulp.task('build-dev', (done) => {
-    webpackStream(webpackDev, webpack).pipe(gulp.dest('dist'));
-    done();
+gulp.task('build-dev', () => {
+    return webpackStream(webpackDev, webpack).pipe(gulp.dest('dist'));
 });
-gulp.task('build-prod', (done) => {
-    webpackStream(webpackProd, webpack).pipe(gulp.dest('dist'));
-    done();
-}); 
-gulp.task('scripts', () => {    
-    return gulp.parallel('build-prod', 'build-dev');
+gulp.task('build-prod', () => {
+    return webpackStream(webpackProd, webpack).pipe(gulp.dest('dist'));
 });
 
 // Create a new build in dist folder
 gulp.task('build', gulp.series(
     'clean',
     'babel',
-    gulp.parallel('styles', 'scripts'),
+    gulp.parallel('styles', 'build-dev', 'build-prod'),
     'clean-tmp'
 ));
