@@ -1,9 +1,10 @@
-const webpack = require('webpack');
+const path = require('path');
+
 module.exports = {
-  performance: {
-    hints: false
+  entry: {
+    app: './dist/tmp/index.js'
   },
-  plugins: [
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-  ]
+  output: {
+    path: path.resolve(__dirname, 'dist')
+  }
 };
