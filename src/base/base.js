@@ -15,3 +15,7 @@ export class NJPicker {
     }
 
 }
+
+if (typeof global === 'object' && !global.NJPicker) {
+    global.NJPicker = NJPicker;
+}
