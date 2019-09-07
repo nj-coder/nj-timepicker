@@ -1,17 +1,32 @@
+import { Background } from '../background/background';
+
 export class NJPicker {
 
     constructor(options) {
-        if (typeof (options) != 'Object') {
-            throw "No options passed for initilization";
-        } else {
-            this.config = options;
-            initPlugin();
-        }
+        this.config = options || {};
+
+        this.build();
     }
 
     // set the options for building the plugin
-    initPlugin() {
-        let default_config = {};
+    build() {
+        this.container = document.createElement('div'); // create picker container div
+        this.container.classList.add('nj-picker'); // add the container class name
+        this.bg = new Background(); // init the backdrop
+
+        this.container.append(this.bg.build()); // append the backdrop to the picker container
+
+        document.body.append(this.container); // attach the picker container to the dom
+    }
+
+    // shows the picker
+    showPicker() {
+        this.bg.show(); // shows the backdrop
+    }
+
+    // hides the picker
+    hidePicker() {
+        this.bg.show(); // hides the backdrop
     }
 
 }
