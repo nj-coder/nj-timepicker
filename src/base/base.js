@@ -18,8 +18,8 @@ export class NJPicker {
             theming: {}
         };
     }
-    // set the options for building the plugin
-    build() {
+    // check if the target element exist in the dom
+    checkTarget() {
         if (this.config.targetEl) { // check for valid dom element
             if (this.config.targetEl.nodeType != Node.ELEMENT_NODE) {
                 throw ('targetEl does not exist in the dom');
@@ -31,23 +31,28 @@ export class NJPicker {
                 throw ('targetID does not exist in the dom');
             }
         }
+    }
+    // set the options for building the plugin
+    build() {
+        this.checkTarget(); // checks for a valid target element
+        this.targetElement.addEventListener('click', this.showPicker.bind(this)); // attach the click to show picker
+
         this.container = document.createElement('div'); // create picker container div
         this.container.classList.add('nj-picker'); // add the container class name
-        this.bg = new Background(); // init the backdrop
+        this.overlay = new Background(); // init the backdrop
 
         this.container.append(this.bg.build()); // append the backdrop to the picker container
-
         document.body.append(this.container); // attach the picker container to the dom
-    }
+    } 
 
     // shows the picker
     showPicker() {
-        this.bg.show(); // shows the backdrop
+        this.overlay.show(); // shows the backdrop
     }
 
     // hides the picker
     hidePicker() {
-        this.bg.hide(); // hides the backdrop
+        this.overlay.hide(); // hides the backdrop
     }
 
 }
