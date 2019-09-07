@@ -1,5 +1,9 @@
 import { Background } from '../background/background';
 import NanoEvents from 'nanoevents';
+import { PickerHour as hours } from '../hour/hour';
+import { PickerMinute as minutes } from '../minutes/minute';
+import { PickerAMPM as ampm } from '../ampm/ampm';
+import { ActionButton as buttons } from '../button/buttons';
 
 export class NJPicker {
 
@@ -57,7 +61,22 @@ export class NJPicker {
         // create the container
         this.container = document.createElement('div');
         this.container.classList.add('nj-picker-container');
-        this.container.innerHTML = 'd';
+
+        // create hours contianer
+        this.hours = new hours();
+        this.container.append(this.hours.build(this.config));
+
+        // create minutes contianer
+        this.minutes = new minutes();
+        this.container.append(this.minutes.build(this.config));
+
+        // create ampm contianer
+        this.ampm = new ampm();
+        this.container.append(this.ampm.build(this.config));
+
+        // create buttons contianer
+        this.buttons = new buttons();
+        this.container.append(this.buttons.build(this.config));
 
         // attach the picker container to the wrapper
         this.wrapper.append(this.container);
