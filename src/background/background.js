@@ -4,7 +4,7 @@ export class Background {
     build() {
         this.element = document.createElement('div');
         this.element.className = 'nj-overlay';
-        return this.element;
+        return this.element; // return the element to parent
     }
 
     // show the back drop

@@ -1,18 +1,3 @@
-.nj-picker .nj-overlay {
-  position: fixed;
-  display: none;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 2; }
-
-.nj-picker .nj-overlay-show {
-  display: block !important; }
-
 /* Applies to the entire body of the HTML document (except where overridden by more specific
 selectors). */
 body {
@@ -34,6 +19,21 @@ h1 {
 /* Applies to the element with <... id="someid"> specified. */
 #someid {
   color: green; }
+
+.nj-picker .nj-overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2; }
+
+.nj-picker .nj-overlay-show {
+  display: block !important; }
 
 /* Applies to the entire body of the HTML document (except where overridden by more specific
 selectors). */

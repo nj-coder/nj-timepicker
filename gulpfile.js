@@ -46,3 +46,6 @@ gulp.task('build', gulp.series(
     gulp.parallel('styles', 'build-dev', 'build-prod'),
     'clean-tmp'
 ));
+
+// Watch for changes.
+gulp.task('watch', () => gulp.watch(['./src/*/*.js', './src/*/*.scss'], gulp.series('babel', 'styles', 'build-dev', 'clean-tmp')));
