@@ -1,5 +1,4 @@
 
-
 .nj-picker .nj-overlay {
   position: fixed;
   display: none;
@@ -14,6 +13,7 @@
 
 .nj-picker .nj-overlay-show {
   display: block !important; }
+
 
 
 

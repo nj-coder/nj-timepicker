@@ -48,7 +48,7 @@ export class NJPicker {
 
         // init the overlay
         this.overlay = new Background(this.config);
-        if (this.config.clickOverlayClose) {
+        if (this.config.clickOverlayClose) { // check if clickOverlayClose is true
             this.overlay.on('overlay-click', this.hidePicker.bind(this));
         }
 
