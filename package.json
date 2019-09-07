@@ -38,5 +38,6 @@
     "webpack": "^4.39.3",
     "webpack-merge": "^4.2.2",
     "webpack-stream": "^5.2.1"
-  }
+  },
+  "dependencies": {}
 }

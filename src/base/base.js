@@ -42,35 +42,40 @@ export class NJPicker {
         // attach the click to show picker
         this.targetElement.addEventListener('click', this.showPicker.bind(this));
 
-        // create picker container div
-        this.container = document.createElement('div');
-        this.container.classList.add('nj-picker');
+        // create picker wrapper div
+        this.wrapper = document.createElement('div');
+        this.wrapper.classList.add('nj-picker');
 
         // init the overlay
-        this.overlay = new Background(this.config);
+        this.overlay = new Background();
         if (this.config.clickOverlayClose) { // check if clickOverlayClose is true
-            this.overlay.on('overlay-click', this.hidePicker.bind(this));
+            this.overlay.addEventListener('click', this.hidePicker.bind(this));
         }
+        // append the overlay to the picker wrapper
+        this.wrapper.append(this.overlay);
 
-        // append the overlay to the picker container
-        this.container.append(this.overlay.build(this));
-        // attach the picker container to the dom
-        document.body.append(this.container);
+        // create the container
+        this.container = document.createElement('div');
+        this.container.classList.add('nj-picker-container');
+        this.container.innerHTML = 'd';
+
+        // attach the picker container to the wrapper
+        this.wrapper.append(this.container);
+        // attach the picker wrapper to the dom
+        document.body.append(this.wrapper);
         this.emitter.emit('ready'); // emit the plugin ready event
     }
 
     // shows the picker
     showPicker() {
-        this.emitter.emit('before.show'); // emit the before pluging show event
-        this.overlay.show(); // shows the overlay
+        this.wrapper.classList.add('nj-picker-show');
         this.emitter.emit('show'); // emit plugin show event
     }
 
     // hides the picker
     hidePicker() {
+        this.wrapper.classList.remove('nj-picker-show');
         this.emitter.emit('hide'); // emit the plugin hide event
-        this.overlay.hide(); // hides the backdrop
-        this.emitter.emit('after.hide'); // emit the plugin after hide event
     }
 
     // create an on method to mask emitter on

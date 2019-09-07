@@ -1,0 +1,22 @@
+.nj-picker {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    .nj-picker-container {
+        background: #fff;
+        max-width: 400px;
+        min-width: 300px;
+        width: 100%;
+        z-index: 10;
+    }
+}
+
+.nj-picker-show {
+    display: flex !important;
+}
