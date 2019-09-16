@@ -1,3 +1,9 @@
+.nj-picker .nj-ampm-container {
+  padding: 0 1em 1em 1em; }
+  .nj-picker .nj-ampm-container .nj-ampm-wrapper {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 1em; }
 
 .nj-overlay {
   position: fixed;
@@ -27,6 +33,21 @@
     z-index: 10;
     border-radius: 4px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); }
+  .nj-picker .nj-section-header {
+    margin-bottom: 4px;
+    font-weight: bold; }
+  .nj-picker .nj-item {
+    border: 1px solid #ccc;
+    padding: 0.5em;
+    text-align: center;
+    border-radius: 4px; }
+    .nj-picker .nj-item:hover {
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.19); }
+  .nj-picker .nj-item.selected {
+    background: blue;
+    color: #fff;
+    border-color: blue; }
 
 .nj-picker-show {
   display: flex !important; }

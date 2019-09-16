@@ -22,9 +22,11 @@ export class NJPicker {
     // plugin default config
     get defaultConfig() {
         return {
+            id: new Date().getTime(),
             targetEl: null,
             targetID: null,
-            clickOverlayClose: true
+            clickOverlayClose: true,
+            format: '12'
         };
     }
     // check if the target element exist in the dom
@@ -49,6 +51,7 @@ export class NJPicker {
         // create picker wrapper div
         this.wrapper = document.createElement('div');
         this.wrapper.classList.add('nj-picker');
+        this.wrapper.setAttribute('id', this.config.id);
 
         // init the overlay
         this.overlay = new Background();
@@ -111,8 +114,10 @@ export class NJPicker {
 
     // create ampm contianer
     buildAMPM() {
-        this.ampm = new ampm();
-        this.container.append(this.ampm.build(this.config));
+        if (this.config.format == '12') {
+            this.ampm = new ampm();
+            this.container.append(this.ampm.build(this.config));
+        }
     }
 
     // create an on method to mask emitter on
