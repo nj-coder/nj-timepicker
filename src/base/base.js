@@ -70,13 +70,8 @@ export class NJPicker {
         this.minutes = new minutes();
         this.container.append(this.minutes.build(this.config));
 
-        // create ampm contianer
-        this.ampm = new ampm();
-        this.container.append(this.ampm.build(this.config));
-
-        // create buttons contianer
-        this.buttons = new buttons();
-        this.container.append(this.buttons.build(this.config));
+        this.buildAMPM(); // configure ampm container
+        this.buildButtons(); // configure picker buttons
 
         // attach the picker container to the wrapper
         this.wrapper.append(this.container);
@@ -95,6 +90,29 @@ export class NJPicker {
     hidePicker() {
         this.wrapper.classList.remove('nj-picker-show');
         this.emitter.emit('hide'); // emit the plugin hide event
+    }
+
+    // create buttons contianer
+    buildButtons() {
+        this.buttons = new buttons();
+        this.buttons.on('save', () => {
+            this.emitter.emit('save');
+            this.hidePicker();
+        });
+        this.buttons.on('clear', () => {
+            this.emitter.emit('clear');
+        });
+        this.buttons.on('close', () => {
+            this.emitter.emit('close');
+            this.hidePicker();
+        });
+        this.container.append(this.buttons.build(this.config));
+    }
+
+    // create ampm contianer
+    buildAMPM() {
+        this.ampm = new ampm();
+        this.container.append(this.ampm.build(this.config));
     }
 
     // create an on method to mask emitter on

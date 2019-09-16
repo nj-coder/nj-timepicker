@@ -1,1 +1,25 @@
-.nj-picker {}
+.nj-picker {
+    .nj-action-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+
+        .nj-action-button {
+            padding: 0.8em;
+            text-align: center;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .nj-action-save {
+            background: green;
+        }
+
+        .nj-action-clear {
+            background: orange;
+        }
+
+        .nj-action-close {
+            background: red;
+        }
+    }
+}

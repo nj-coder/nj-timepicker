@@ -22,8 +22,8 @@
   .nj-picker .nj-picker-container {
     background: #fff;
     max-width: 400px;
-    min-width: 300px;
-    width: 100%;
+    min-width: 350px;
+    width: 50%;
     z-index: 10;
     border-radius: 4px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); }
@@ -31,5 +31,19 @@
 .nj-picker-show {
   display: flex !important; }
 
+.nj-picker .nj-action-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); }
+  .nj-picker .nj-action-container .nj-action-button {
+    padding: 0.8em;
+    text-align: center;
+    color: #fff;
+    cursor: pointer; }
+  .nj-picker .nj-action-container .nj-action-save {
+    background: green; }
+  .nj-picker .nj-action-container .nj-action-clear {
+    background: orange; }
+  .nj-picker .nj-action-container .nj-action-close {
+    background: red; }
 
 
