@@ -2,6 +2,8 @@ export class PickerAMPM {
 
     constructor(options) {
         this.config = options;
+        this.currentSelection = null;
+        this.currentValue = null;
     }
 
     // build
@@ -38,7 +40,7 @@ export class PickerAMPM {
         let pm = document.createElement('div');
         pm.className = 'nj-item';
         pm.innerText = 'PM';
-        am.setAttribute('data', 'pm');
+        pm.setAttribute('data', 'pm');
         pm.onclick = this.itemClick.bind(this, pm);
         buttonWrapper.append(pm);
 
@@ -47,19 +49,29 @@ export class PickerAMPM {
 
     // item clicked
     itemClick(item) {
-        if (item.classList.contains('selected')) {
-            item.classList.remove('selected');
-        } else {
-            item.classList.add('selected');
+        if (this.currentSelection) { // remove previous selection
+            this.currentSelection.classList.remove('selected');
         }
+        item.classList.add('selected');
+        this.currentSelection = item;
+        this.currentValue = item.getAttribute('data');
     }
 
-    setValue(){}
+    setValue() { }
 
     // gets the value of am-pm
-    getValue(){}
+    getValue() { }
+
+    // resets the value
+    resetValue() {
+        if (this.currentSelection) {
+            this.currentSelection.classList.remove('selected');
+        }
+        this.currentSelection = null;
+        this.currentValue = null;
+    }
 
     // validation
-    validateInput(){}
+    validateInput() { }
 
 }

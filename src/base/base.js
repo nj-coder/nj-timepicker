@@ -66,8 +66,8 @@ export class NJPicker {
         this.container.classList.add('nj-picker-container');
 
         // create hours contianer
-        this.hours = new hours();
-        this.container.append(this.hours.build(this.config));
+        this.hours = new hours(this.config);
+        this.container.append(this.hours.build());
 
         // create minutes contianer
         this.minutes = new minutes();
@@ -97,12 +97,14 @@ export class NJPicker {
 
     // create buttons contianer
     buildButtons() {
-        this.buttons = new buttons();
+        this.buttons = new buttons(this.config);
         this.buttons.on('save', () => {
             this.emitter.emit('save');
             this.hidePicker();
         });
         this.buttons.on('clear', () => {
+            this.hours.resetValue(); // resets the hours
+            this.ampm.resetValue(); // resets am-pm
             this.emitter.emit('clear');
         });
         this.buttons.on('close', () => {
@@ -115,8 +117,8 @@ export class NJPicker {
     // create ampm contianer
     buildAMPM() {
         if (this.config.format == '12') {
-            this.ampm = new ampm();
-            this.container.append(this.ampm.build(this.config));
+            this.ampm = new ampm(this.config);
+            this.container.append(this.ampm.build());
         }
     }
 
