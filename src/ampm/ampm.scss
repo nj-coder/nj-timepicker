@@ -1,11 +1,11 @@
 .nj-picker {
     .nj-ampm-container {
-        padding: 0 1em 1em 1em;
+        padding: 0 0.5em 0.5em 0.5em;
 
         .nj-ampm-wrapper {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
-            grid-gap: 1em;
+            grid-gap: 0.5em;
         }
     }
 }

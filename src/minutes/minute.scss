@@ -1,1 +1,11 @@
-.nj-picker {}
+.nj-picker {
+    .nj-minutes-container {
+        padding: 0 0.5em 0.5em 0.5em;
+
+        .nj-minutes-wrapper {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            grid-gap: 0.5em;
+        }
+    }
+}

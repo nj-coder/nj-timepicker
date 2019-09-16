@@ -22,7 +22,7 @@ export class NJPicker {
     // plugin default config
     get defaultConfig() {
         return {
-            id: new Date().getTime(),
+            id: Math.random().toString(36).substring(7),
             targetEl: null,
             targetID: null,
             clickOverlayClose: true,
@@ -65,14 +65,8 @@ export class NJPicker {
         this.container = document.createElement('div');
         this.container.classList.add('nj-picker-container');
 
-        // create hours contianer
-        this.hours = new hours(this.config);
-        this.container.append(this.hours.build());
-
-        // create minutes contianer
-        this.minutes = new minutes();
-        this.container.append(this.minutes.build(this.config));
-
+        this.buildHours();
+        this.buildMinutes();
         this.buildAMPM(); // configure ampm container
         this.buildButtons(); // configure picker buttons
 
@@ -104,6 +98,7 @@ export class NJPicker {
         });
         this.buttons.on('clear', () => {
             this.hours.resetValue(); // resets the hours
+            this.minutes.resetValue(); // reset minutes
             this.ampm.resetValue(); // resets am-pm
             this.emitter.emit('clear');
         });
@@ -112,6 +107,18 @@ export class NJPicker {
             this.hidePicker();
         });
         this.container.append(this.buttons.build(this.config));
+    }
+
+    // create hours contianer
+    buildHours() {
+        this.hours = new hours(this.config);
+        this.container.append(this.hours.build());
+    }
+
+    // create minutes contianer
+    buildMinutes() {
+        this.minutes = new minutes(this.config);
+        this.container.append(this.minutes.build());
     }
 
     // create ampm contianer

@@ -1,11 +1,11 @@
 .nj-picker {
     .nj-hours-container {
-        padding: 1em;
+        padding: 0.5em;
 
         .nj-hours-wrapper {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
-            grid-gap: 1em;
+            grid-gap: 0.5em;
         }
     }
 }
