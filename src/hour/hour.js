@@ -41,7 +41,6 @@ export class PickerHour {
             buttonWrapper.append(item);
         }
 
-
         this.element.append(buttonWrapper);
     }
 
