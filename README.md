@@ -5,11 +5,11 @@
 
 ## Table of Contents
 
-- [Installation](#nstallation)
-- [Configuration](#features)
-- [Usage](#feedback)
-- [How to Contribute](#contributors)
-- [License](#backers-)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Usage](#usage)
+- [How to Contribute](#how-to-contribute)
+- [License](#license)
 
 ## Installation
 
