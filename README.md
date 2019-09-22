@@ -50,4 +50,8 @@ picker.on('save', function (data) {
 2. Make changes and test
 3. Submit Pull Request with comprehensive description of changes
 
+## Versioning
+NJ-Picker uses [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+
 ## License
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
