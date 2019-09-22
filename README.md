@@ -1,4 +1,6 @@
 # NJ-Picker
 > A simple and user-friendly timepicker using pure JavaScript
 
-Elements in beautiful READMEs include, but are not limited to: images, screenshots, GIFs, text formatting, etc.
+[NJ-Picker](http://nj-coder.com/) is a pure JavaScript based timepicker that enables you to select time both in 12-hour and 24-hour format which is mobile and web friendly. Checkout the [DEMO HERE](http://nj-coder.com/)
+
+## Installation
