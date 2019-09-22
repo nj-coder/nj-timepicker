@@ -93,7 +93,17 @@ export class NJPicker {
     buildButtons() {
         this.buttons = new buttons(this.config);
         this.buttons.on('save', () => {
-            this.emitter.emit('save');
+            let result = {
+                hours: this.hours.getValue(),
+                minutes: this.minutes.getValue()
+            };
+            if (this.config.format == '12') {
+                result.ampm = this.ampm.getValue();
+                result.fullResult = `${result.hours}:${result.minutes} ${result.ampm}`;
+            } else {
+                result.fullResult = `${result.hours}:${result.minutes}`;
+            }
+            this.emitter.emit('save', result);
             this.hidePicker();
         });
         this.buttons.on('clear', () => {

@@ -29,7 +29,7 @@ export class PickerHour {
         let buttonWrapper = document.createElement('div');
         buttonWrapper.className = 'nj-hours-wrapper';
 
-        let buttonLimit = this.config.format == '12' ? 12 : 24;
+        let buttonLimit = this.config.format == '12' ? 12 : 23;
         let buttonStart = this.config.format == '12' ? 1 : 0;
 
         for (let i = buttonStart; i <= buttonLimit; i++) {
@@ -58,7 +58,9 @@ export class PickerHour {
     setValue() { }
 
     // gets the value of am-pm
-    getValue() { }
+    getValue() { 
+        return this.currentValue;
+    }
 
     // resets the value
     resetValue() {

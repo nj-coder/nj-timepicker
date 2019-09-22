@@ -57,7 +57,9 @@ export class PickerMinute {
     setValue() { }
 
     // gets the value of am-pm
-    getValue() { }
+    getValue() { 
+        return this.currentValue;
+    }
 
     // resets the value
     resetValue() {
