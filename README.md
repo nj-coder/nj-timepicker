@@ -19,10 +19,10 @@ npm install --save nj-timepicker
 
 ## Configuration
 | Property        | Values           | Description  |
-| --------------- |:----------------:| -----:|
+| :-------------- |:-----------------| :------------|
 | target          | DOM Element      | The target DOM elment to hook the plugin |
-| targetID        | string           | DOM element ID |
-| zebra stripes   | are neat      |    $1 |
+| targetID        | String           | DOM element ID |
+| format          | ```12 | 24```    |    $1 |
 
 ## Usage
 ```js
