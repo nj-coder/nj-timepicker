@@ -46,10 +46,10 @@ The plugin ships with various configuration and events that can be used to meet 
 
 ### Theming
 You can overridde the default theme by changing the following css variables.
-```css
+```js
 :root {
     // save button 
-    --save-button-bg: #0000ff;
+    --save-button-bg: #008000;
     --save-button-fc: #ffffff;
 
     // clear button
