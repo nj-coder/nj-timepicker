@@ -31,15 +31,13 @@
     <script src="../dist/scripts.js"></script>
     <script>
         (function () {
+            let container = document.querySelector('#container');
             var picker = new NJPicker({
                 targetID: 'container',
                 format: '24'
             });
-            picker.on('show', function (data) {
-                console.log("show");
-            });
             picker.on('save', function (data) {
-                console.log("save", data);
+                container.textContent = data.fullResult;
             })
         })();
     </script>
