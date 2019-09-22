@@ -31,6 +31,7 @@ The plugin ships with various configuration and events that can be used to meet 
 | :-------------- |:-----------------| :------------| :------------|
 | target          | DOM Element      | --           | target DOM elment |
 | targetID        | String           | --           | DOM element ID |
+| id              | --               | Alphanumeric string           | Unique picker ID |
 | format          | ```12 \| 24```   | ```12```     | Time display format |
 | clickOutsideToClose| ```true \| false```   | ```true```     | Click outside to close |
 
