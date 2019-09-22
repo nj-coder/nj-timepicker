@@ -46,8 +46,8 @@ The plugin ships with various configuration and events that can be used to meet 
 | clear       | on clear button click |
 
 ### Theming
-You can overridde the default theme by changing the following [css variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties).
-```dww
+You can overridde the default theme by changing the following [css variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)
+```css
 :root {
     /* save button */ 
     --save-button-bg: #008000;
