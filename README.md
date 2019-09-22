@@ -18,10 +18,10 @@ NJ-Picker can be installed using the Node Package Manager, [NPM](https://www.npm
 npm install --save nj-timepicker
 ```
 ### direct link
-```sh
+```js
 <script src="../dist/scripts.js"></script>
 ```
-```sh
+```js
 <link rel="stylesheet" href="../dist/style.css">
 ```
 
