@@ -29,7 +29,7 @@ The plugin ships with various configuration and events that can be used to meet 
 ### Initialization Options
 | Property        | Values           | Default      | Description  |
 | :-------------- |:-----------------| :------------| :------------|
-| target          | DOM Element      | --           | The target DOM elment to hook the plugin |
+| target          | DOM Element      | --           | target DOM elment |
 | targetID        | String           | --           | DOM element ID |
 | format          | ```12 \| 24```   | ```12```     | Time display format |
 | clickOutsideToClose| ```true \| false```   | ```true```     | Click outside to close |
@@ -43,6 +43,13 @@ The plugin ships with various configuration and events that can be used to meet 
 | save        | on save button click |
 | cancel      | on cancel button click |
 | clear       | on clear button click |
+
+### Theming
+```css
+:root {
+    ....
+}
+```
 
 ## Usage
 ```js
