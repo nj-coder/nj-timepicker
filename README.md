@@ -18,13 +18,20 @@ npm install --save nj-timepicker
 ```
 
 ## Configuration
+| Property        | Values           | Description  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
 
 ## Usage
 ```js
 let container = document.querySelector('#container');
+// init picker
 var picker = new NJPicker({
     targetID: 'container'
 });
+// on save event
 picker.on('save', function (data) {
     container.textContent = data.fullResult;
 });
