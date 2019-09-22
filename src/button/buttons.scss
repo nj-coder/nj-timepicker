@@ -11,15 +11,18 @@
         }
 
         .nj-action-save {
-            background: green;
+            background: var(--save-button-bg);
+            color: var(--save-button-fc);
         }
 
         .nj-action-clear {
-            background: orange;
+            background: var(--clear-button-bg);
+            color: var(--clear-button-fc);
         }
 
         .nj-action-close {
-            background: red;
+            background: var(--close-button-bg);
+            color: var(--close-button-fc);
         }
     }
 }

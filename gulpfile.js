@@ -15,7 +15,7 @@ gulp.task('clean-tmp', require('del').bind(null, ['dist/tmp']));
 
 // build css
 gulp.task('styles', function () {
-    return gulp.src(['./src/**/*.scss'])
+    return gulp.src(['./src/theme.scss', './src/**/*.scss'])
         .pipe(sass().on('error', sass.logError))
         .pipe(concat('style.css'))
         .pipe(gulp.dest('dist'))
@@ -48,4 +48,4 @@ gulp.task('build', gulp.series(
 ));
 
 // Watch for changes.
-gulp.task('watch', () => gulp.watch(['./src/*/*.js', './src/*/*.scss'], gulp.series('babel', 'styles', 'build-dev', 'clean-tmp')));
+gulp.task('watch', () => gulp.watch(['./src/*/*.js', './src/*.scss', './src/*/*.scss'], gulp.series('babel', 'styles', 'build-dev', 'clean-tmp')));
