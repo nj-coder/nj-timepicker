@@ -22,7 +22,7 @@ npm install --save nj-timepicker
 | :-------------- |:-----------------| :------------|
 | target          | DOM Element      | The target DOM elment to hook the plugin |
 | targetID        | String           | DOM element ID |
-| format          | ```12 | 24```    |    $1 |
+| format          | ```12``` ```24```| Time display format |
 
 ## Usage
 ```js
