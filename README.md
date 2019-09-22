@@ -29,11 +29,11 @@ The plugin ships with various configuration and events that can be used to meet 
 ### Initialization Options
 | Property        | Values           | Default      | Description  |
 | :-------------- |:-----------------| :------------| :------------|
-| target          | DOM Element      | --           | target DOM elment |
-| targetID        | String           | --           | DOM element ID |
-| id              | --               | Alphanumeric string           | Unique picker ID |
-| format          | ```12 \| 24```   | ```12```     | Time display format |
-| clickOutsideToClose| ```true \| false```   | ```true```     | Click outside to close |
+| target          | DOM Element      | --           | target DOM element |
+| targetID        | String           | --           | the DOM element ID |
+| id              | --               | ```alphanumeric string```           | a unique ID for the picker |
+| format          | ```12 \| 24```   | ```12```     | picker display format |
+| clickOutsideToClose| ```true \| false```   | ```true```     | to close the picker when clicked outside |
 
 ### Events
 | Name        | Description  |
