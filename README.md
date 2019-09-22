@@ -26,12 +26,18 @@ npm install --save nj-timepicker
 ```
 
 ## Configuration
+### Plugin Init Options
 | Property        | Values           | Default      | Description  |
 | :-------------- |:-----------------| :------------| :------------|
 | target          | DOM Element      | --           | The target DOM elment to hook the plugin |
 | targetID        | String           | --           | DOM element ID |
 | format          | ```12 \| 24```   | ```12```     | Time display format |
 | clickOutsideToClose| ```true \| false```   | ```true```     | Click outside to close |
+
+### Events
+| Name        | Description  |
+| :---------- |:-------------|
+| save        | on save button click |
 
 ## Usage
 ```js
