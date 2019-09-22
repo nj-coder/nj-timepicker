@@ -25,7 +25,7 @@ export class NJPicker {
             id: Math.random().toString(36).substring(7),
             targetEl: null,
             targetID: null,
-            clickOverlayClose: true,
+            clickOutsideToClose: true,
             format: '12'
         };
     }
@@ -55,7 +55,7 @@ export class NJPicker {
 
         // init the overlay
         this.overlay = new Background();
-        if (this.config.clickOverlayClose) { // check if clickOverlayClose is true
+        if (this.config.clickOutsideToClose) { // check if clickOutsideToClose is true
             this.overlay.addEventListener('click', this.hidePicker.bind(this));
         }
         // append the overlay to the picker wrapper

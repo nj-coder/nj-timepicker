@@ -31,7 +31,7 @@ npm install --save nj-timepicker
 | target          | DOM Element      | --           | The target DOM elment to hook the plugin |
 | targetID        | String           | --           | DOM element ID |
 | format          | ```12 \| 24```   | ```12```     | Time display format |
-| clickOverlayClose| ```true \| false```   | ```true```     | Click outside to close |
+| clickOutsideToClose| ```true \| false```   | ```true```     | Click outside to close |
 
 ## Usage
 ```js
