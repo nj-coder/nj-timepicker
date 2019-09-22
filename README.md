@@ -45,9 +45,20 @@ The plugin ships with various configuration and events that can be used to meet 
 | clear       | on clear button click |
 
 ### Theming
+You can overridde the default theme by changing the following css variables.
 ```css
 :root {
-    ....
+    // save button 
+    --save-button-bg: #0000ff;
+    --save-button-fc: #ffffff;
+
+    // clear button
+    --clear-button-bg: #ffa500;
+    --clear-button-fc: #ffffff;
+
+    // close button
+    --close-button-bg: #ff0000;
+    --close-button-fc: #ffffff;
 }
 ```
 
