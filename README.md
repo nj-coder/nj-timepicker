@@ -53,11 +53,11 @@ You can overridde the default theme by changing the following [css variables](ht
     --save-button-bg: #008000;
     --save-button-fc: #ffffff;
 
-    // clear button
+    /* clear button */
     --clear-button-bg: #ffa500;
     --clear-button-fc: #ffffff;
 
-    // close button
+    /* close button */
     --close-button-bg: #ff0000;
     --close-button-fc: #ffffff;
 }
