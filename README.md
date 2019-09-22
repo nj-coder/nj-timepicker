@@ -26,7 +26,9 @@ npm install --save nj-timepicker
 ```
 
 ## Configuration
-### Plugin Init Options
+The plugin ships with various configuration and events that can be used to meet your requirements.
+
+### Initialization Options
 | Property        | Values           | Default      | Description  |
 | :-------------- |:-----------------| :------------| :------------|
 | target          | DOM Element      | --           | The target DOM elment to hook the plugin |
@@ -37,7 +39,12 @@ npm install --save nj-timepicker
 ### Events
 | Name        | Description  |
 | :---------- |:-------------|
+| ready       | when plugin initialization is complete |
+| show        | picker is presented to the user |
+| hide        | when picker is hidden |
 | save        | on save button click |
+| cancel      | on cancel button click |
+| clear       | on clear button click |
 
 ## Usage
 ```js
