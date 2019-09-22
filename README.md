@@ -12,10 +12,23 @@
 - [License](#license)
 
 ## Installation
+### using npm
+```sh
+npm install --save nj-timepicker
+```
 
 ## Configuration
 
 ## Usage
+```js
+let container = document.querySelector('#container');
+var picker = new NJPicker({
+    targetID: 'container'
+});
+picker.on('save', function (data) {
+    container.textContent = data.fullResult;
+});
+```
 
 ## How to Contribute
 1. Clone repo and create a new branch: `$ git checkout https://github.com/nj-coder/nj-timepicker -b name_for_new_branch`.
