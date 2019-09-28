@@ -190,4 +190,5 @@ export class NJTimePicker {
 
 if (typeof global === 'object' && !global.NJTimePicker) {
     global.NJTimePicker = NJTimePicker;
+    global.NJTimePicker.version = 'v1.1.101';
 }
