@@ -3,7 +3,7 @@
   <img src="http://nj-coder.com/nj-libs/nj-timepicker/images/screen-shot.png">
 </p>
 
-[NJ-TimePicker](http://nj-coder.com/) is a pure JavaScript based timepicker that enables you to select time both in 12-hour and 24-hour format in a web and mobile friendly user interface. Checkout the [DEMO HERE](http://nj-coder.com/nj-libs/nj-timepicker/index.html)
+NJ-TimePicker is a pure JavaScript based timepicker that enables you to select time both in 12-hour and 24-hour format in a web and mobile friendly user interface. Checkout the [DEMO HERE](http://nj-coder.com/nj-libs/nj-timepicker/index.html)
 
 ## Table of Contents
 
@@ -63,20 +63,20 @@ This is methods triggers the hide event and hides the picker.
 The setValue method sets the value of the picker. It take one argument which can be a string or a object
 ```js
 // as string
-picker.setValue('12'); // h -> 12
-picker.setValue('12:45'); // h -> 12, m - > 45 
-picker.setValue('12:45 am'); // h -> 12, m - > 45, meridiem -> am
+picker.setValue('12'); // h-12
+picker.setValue('12:45'); // h-12, m-45 
+picker.setValue('12:45 am'); // h-12, m-45, meridiem-am
 
 // as object
-picker.setValue({ // h -> 12
+picker.setValue({ // h-12
   key: 'hours',
   value: 12
 });
-picker.setValue({ // m -> 45
+picker.setValue({ // m-45
   key: 'minutes',
   value: 45
 });
-picker.setValue({ // meridiem -> am
+picker.setValue({ // meridiem-am
   key: 'ampm',
   value: 'am'
 });
