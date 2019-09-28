@@ -6,6 +6,13 @@
   --close-button-bg: #ff0000;
   --close-button-fc: #ffffff; }
 
+.nj-picker .nj-ampm-container {
+  padding: 0 0.5em 0.5em 0.5em; }
+  .nj-picker .nj-ampm-container .nj-ampm-wrapper {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 0.5em; }
+
 .nj-overlay {
   position: fixed;
   width: 100%;
@@ -16,13 +23,6 @@
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 2; }
-
-.nj-picker .nj-ampm-container {
-  padding: 0 0.5em 0.5em 0.5em; }
-  .nj-picker .nj-ampm-container .nj-ampm-wrapper {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-gap: 0.5em; }
 
 .nj-picker {
   height: 100%;
