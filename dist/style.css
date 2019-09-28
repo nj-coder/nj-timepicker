@@ -62,13 +62,6 @@
 .nj-picker-show {
   display: flex !important; }
 
-.nj-picker .nj-hours-container {
-  padding: 0.5em; }
-  .nj-picker .nj-hours-container .nj-hours-wrapper {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-gap: 0.5em; }
-
 .nj-picker .nj-action-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr); }
@@ -86,6 +79,13 @@
   .nj-picker .nj-action-container .nj-action-close {
     background: var(--close-button-bg);
     color: var(--close-button-fc); }
+
+.nj-picker .nj-hours-container {
+  padding: 0.5em; }
+  .nj-picker .nj-hours-container .nj-hours-wrapper {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 0.5em; }
 
 .nj-picker .nj-minutes-container {
   padding: 0 0.5em 0.5em 0.5em; }

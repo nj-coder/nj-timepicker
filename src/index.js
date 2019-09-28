@@ -103,7 +103,9 @@ export class NJTimePicker {
         this.buttons.on('clear', () => {
             this.hours.resetValue(); // resets the hours
             this.minutes.resetValue(); // reset minutes
-            this.ampm.resetValue(); // resets am-pm
+            if (this.config.format == '12') {
+                this.ampm.resetValue(); // resets am-pm
+            }
             this.emitter.emit('clear');
         });
         this.buttons.on('close', () => {
