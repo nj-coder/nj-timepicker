@@ -36,6 +36,11 @@ The plugin ships with various configuration and events that can be used to meet 
 | clickOutsideToClose| ```true \| false```| ```true```               | to close the picker when clicked outside |
 | minutes            | `array`            | `[0, 15, 30, 45]`        | a list of minutes |
 
+### Methods
+NJ-Picker ships with methods that can be used to change the picker behaviour. These methods have strict input formatting which helps achive desired result
+
+#### show()
+
 ### Events
 | Name        | Description  |
 | :---------- |:-------------|
