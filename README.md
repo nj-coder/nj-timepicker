@@ -51,11 +51,22 @@ The plugin ships with various configuration and events that can be used to meet 
 ### Methods
 NJ-Picker ships with methods that can be used to change the picker behaviour. These methods have strict input formatting which helps achive desired result
 
-#### picker.show()
+#### `picker.show()`
 This is methods triggers the show event and presents the picker on-screen.
+
 #### `picker.hide()`
 This is methods triggers the hide event and hides the picker.
 
+#### `picker.setValue(param)`
+The setValue method sets the value of the picker. It take one argument which can be a string or a object
+```js
+// as string
+picker.setValue('12'); // h -> 12
+picker.setValue('12:45'); // h -> 12, m - > 45 
+picker.setValue('12:45 am'); // // h -> 12, m - > 45, meridiem -> am
+
+// as object
+```
 ### Events
 | Name        | Description  |
 | :---------- |:-------------|
