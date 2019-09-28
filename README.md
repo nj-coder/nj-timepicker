@@ -3,7 +3,7 @@
   <img src="http://nj-coder.com/nj-libs/nj-timepicker/images/screen-shot.png">
 </p>
 
-[NJ-TimePicker](http://nj-coder.com/) is a pure JavaScript based timepicker that enables you to select time both in 12-hour and 24-hour format in a web and mobile friendly user interface. Checkout the [DEMO HERE](http://nj-coder.com/)
+[NJ-TimePicker](http://nj-coder.com/) is a pure JavaScript based timepicker that enables you to select time both in 12-hour and 24-hour format in a web and mobile friendly user interface. Checkout the [DEMO HERE](http://nj-coder.com/nj-libs/nj-timepicker/index.html)
 
 ## Table of Contents
 
