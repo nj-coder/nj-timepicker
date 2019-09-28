@@ -1,10 +1,5 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
 <html class="no-js">
-<!--<![endif]-->
 
 <head>
     <meta charset="utf-8">
@@ -15,31 +10,78 @@
     <link rel="stylesheet" href="../dist/style.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <style>
+        body,
+        html {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
         body {
             font-family: 'Roboto', sans-serif;
+            background: #9D50BB;
+            background: -webkit-linear-gradient(to right, #6E48AA, #9D50BB) !important;
+            background: linear-gradient(to right, #6E48AA, #9D50BB) !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .wrapper {
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .wrapper:first-child {
+            margin-right: 2em;
+        }
+
+        .wrapper label {
+            margin-bottom: 1em;
+            display: inline-block;
+        }
+
+        .container {
+            padding: 1em;
+            text-align: center;
+            border: 1px solid #fff;
+            border-radius: 6px;
         }
     </style>
 </head>
 
 <body>
-    <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-    <div class="container" id="container">
-        hello
+    <div class="wrapper">
+        <label for="format_12">12 Hour</label>
+        <div class="container" id="format_12">
+            --:-- --
+        </div>
+    </div>
+    <div class="wrapper">
+        <label for="format_24">24 Hour</label>
+        <div class="container" id="format_24">
+            --:--
+        </div>
     </div>
     <script src="../dist/scripts.js"></script>
     <script>
         (function () {
-            let container = document.querySelector('#container');
-            var picker = new NJPicker({
-                targetID: 'container',
-                format: '12'
+            let format_12 = document.querySelector('#format_12');
+            var format_12_picker = new NJPicker({
+                targetID: 'format_12'
             });
-            picker.on('save', function (data) {
-                container.textContent = data.fullResult;
+            format_12_picker.on('save', function (data) {
+                format_12.textContent = data.fullResult;
             });
-            window.picker = picker;
+
+            let format_24 = document.querySelector('#format_24');
+            var format_24_picker = new NJPicker({
+                targetEl: format_24,
+                format: '24'
+            });
+            format_24_picker.on('save', function (data) {
+                format_24.textContent = data.fullResult;
+            });
         })();
     </script>
 </body>
