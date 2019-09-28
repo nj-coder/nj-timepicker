@@ -1,6 +1,7 @@
-# NJ-Picker
-[NJ-Picker](http://nj-coder.com/) is a pure JavaScript based timepicker that enables you to select time both in 12-hour and 24-hour format in a web and mobile friendly user interface. Checkout the [DEMO HERE](http://nj-coder.com/)
+# NJ-TimePicker
+[NJ-TimePicker](http://nj-coder.com/) is a pure JavaScript based timepicker that enables you to select time both in 12-hour and 24-hour format in a web and mobile friendly user interface. Checkout the [DEMO HERE](http://nj-coder.com/)
 
+![nj-timepicker](http://nj-coder.com/nj-libs/nj-timepicker/images/screen-shot.png)
 ## Table of Contents
 
 - [Installation](#installation)
@@ -10,7 +11,7 @@
 - [License](#license)
 
 ## Installation
-NJ-Picker can be installed using the Node Package Manager, [NPM](https://www.npmjs.com/) or including direct link to your project.
+NJ-TimePicker can be installed using the Node Package Manager, [NPM](https://www.npmjs.com/) or including direct link to your project.
 ### using npm
 ```
 npm install --save nj-timepicker
@@ -26,7 +27,7 @@ npm install --save nj-timepicker
 ```js
 let container = document.querySelector('#container');
 // init picker
-var picker = new NJPicker({
+var picker = new NJTimePicker({
     targetID: 'container'
 });
 // on save event
@@ -49,7 +50,7 @@ The plugin ships with various configuration and events that can be used to meet 
 | minutes            | `array`            | `[0, 15, 30, 45]`        | a list of minutes |
 
 ### Methods
-NJ-Picker ships with methods that can be used to change the picker behaviour. These methods have strict input formatting which helps achive desired result
+NJ-TimePicker ships with methods that can be used to change the picker behaviour. These methods have strict input formatting which helps achive desired result
 
 #### `picker.show()`
 This is methods triggers the show event and presents the picker on-screen.
@@ -81,7 +82,7 @@ picker.setValue({ // meridiem -> am
 ```
 
 #### `picker.getValue(param)`
-The getValue method gets the value of the picker. It take one optional argument.
+The getValue method gets the value of the picker. It takes an optional argument.
 ```js
 picker.getValue();
 // result object
@@ -130,7 +131,7 @@ You can overridde the default theme by changing the following [css variables](ht
 3. Submit Pull Request with comprehensive description of changes
 
 ## Versioning
-NJ-Picker uses [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+NJ-TimePicker uses [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
