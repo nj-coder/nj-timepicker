@@ -27,7 +27,8 @@ export class NJPicker {
             targetEl: null,
             targetID: null,
             clickOutsideToClose: true,
-            format: '12'
+            format: '12',
+            minutes: [0, 15, 30, 45]
         };
     }
 
@@ -95,7 +96,7 @@ export class NJPicker {
     // create buttons contianer
     buildButtons() {
         this.buttons = new buttons(this.config);
-        this.buttons.on('save', () => {            
+        this.buttons.on('save', () => {
             this.emitter.emit('save', this.getValue());
             this.hide();
         });
@@ -135,8 +136,8 @@ export class NJPicker {
     // get the picker value
     getValue(key) {
         let result = {
-            hours: this.hours.getValue(),
-            minutes: this.minutes.getValue(),
+            hours: ("0" + this.hours.getValue()).slice(-2),
+            minutes: ("0" + this.minutes.getValue()).slice(-2),
             fullResult: undefined
         };
         if (this.config.format == '12') {
@@ -154,16 +155,16 @@ export class NJPicker {
 
         return result || {};
     }
-    
+
     // set picker value
     setValue(input) {
         if (typeof (input) == 'string') { // hh:mm am
             try {
                 let split_1 = input.split(':');
-                if (typeof(split_1[0]) != 'undefined' && split_1[0] != '') {
+                if (typeof (split_1[0]) != 'undefined' && split_1[0] != '') {
                     this.hours.setValue(split_1[0]);
                 }
-                if (typeof(split_1[1]) != 'undefined' && split_1[1] != '') {
+                if (typeof (split_1[1]) != 'undefined' && split_1[1] != '') {
                     let split_2 = split_1[1].split(' ');
                     this.minutes.setValue(split_2[0]);
                     this.ampm.setValue(split_2[1]);
@@ -172,7 +173,7 @@ export class NJPicker {
                 //
             }
         } else if (typeof (input) == 'object') {
-            if (input.key && typeof(input.value) != 'undefined' && this[input.key]) {
+            if (input.key && typeof (input.value) != 'undefined' && this[input.key]) {
                 this[input.key].setValue(input.value.toString().toLowerCase());
             }
         }
@@ -186,5 +187,5 @@ export class NJPicker {
 }
 
 if (typeof global === 'object' && !global.NJPicker) {
-    global.NJPicker = NJPicker;  
+    global.NJPicker = NJPicker;
 }

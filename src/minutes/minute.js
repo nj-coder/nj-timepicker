@@ -18,13 +18,15 @@ export class PickerMinute extends Base {
         let buttonWrapper = document.createElement('div');
         buttonWrapper.className = 'nj-minutes-wrapper';
 
-        let minutes = [0, 15, 30, 45];
+        let minutes = this.config.minutes || [0, 15, 30, 45];
 
         for (let i = 0; i < minutes.length; i++) {
-            super.createItem({
-                container: buttonWrapper,
-                innerText: minutes[i]
-            });
+            if (typeof (minutes[i]) == 'number' && minutes[i] < 60) {
+                super.createItem({
+                    container: buttonWrapper,
+                    innerText: minutes[i]
+                });
+            }
         }
 
         this.element.append(buttonWrapper);
