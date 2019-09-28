@@ -34,11 +34,12 @@
             let container = document.querySelector('#container');
             var picker = new NJPicker({
                 targetID: 'container',
-                format: '24'
+                format: '12'
             });
             picker.on('save', function (data) {
                 container.textContent = data.fullResult;
             });
+            window.picker = picker;
         })();
     </script>
 </body>
