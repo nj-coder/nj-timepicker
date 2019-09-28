@@ -22,8 +22,6 @@ npm install --save nj-timepicker
 ### Direct link
 ```
 <script src="http://nj-coder.com/nj-libs/nj-timepicker/dist/scripts.min.js"></script>
-```
-```
 <link rel="stylesheet" href="http://nj-coder.com/nj-libs/nj-timepicker/dist/style.min.css">
 ```
 ## Usage
