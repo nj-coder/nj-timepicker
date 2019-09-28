@@ -138,17 +138,17 @@ export class NJTimePicker {
     // get the picker value
     getValue(key) {
         let result = {
-            hours: ("0" + this.hours.getValue()).slice(-2),
-            minutes: ("0" + this.minutes.getValue()).slice(-2),
+            hours: this.hours.getValue(),
+            minutes: this.minutes.getValue(),
             fullResult: undefined
         };
         if (this.config.format == '12') {
             result.ampm = this.ampm.getValue();
             if (result.hours && result.minutes && result.ampm)
-                result.fullResult = `${result.hours}:${result.minutes} ${result.ampm}`;
+                result.fullResult = `${("0" + result.hours).slice(-2)}:${("0" + result.minutes).slice(-2)} ${result.ampm}`;
         } else {
             if (result.hours && result.minutes)
-                result.fullResult = `${result.hours}:${result.minutes}`;
+                result.fullResult = `${("0" + result.hours).slice(-2)}:${("0" + result.minutes).slice(-2)}`;
         }
 
         if (key) {

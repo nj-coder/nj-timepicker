@@ -71,7 +71,8 @@
                 targetID: 'format_12'
             });
             format_12_picker.on('save', function (data) {
-                format_12.textContent = data.fullResult;
+                if (data.fullResult)
+                    format_12.textContent = data.fullResult;
             });
 
             let format_24 = document.querySelector('#format_24');
@@ -80,7 +81,8 @@
                 format: '24'
             });
             format_24_picker.on('save', function (data) {
-                format_24.textContent = data.fullResult;
+                if (data.fullResult)
+                    format_24.textContent = data.fullResult;
             });
         })();
     </script>
