@@ -43,7 +43,7 @@ The plugin ships with various configuration and events that can be used to meet 
 | :----------------- |:-------------------| :------------------------| :------------|
 | target             | DOM Element        | --                       | target DOM element |
 | targetID           | String             | --                       | the DOM element ID |
-| id                 | --                 | ```alphanumeric string```| a unique ID for the picker |
+| id                 | String             | ```alphanumeric string```| a unique ID for the picker |
 | format             | ```12 \| 24```     | ```12```                 | picker display format |
 | clickOutsideToClose| ```true \| false```| ```true```               | to close the picker when clicked outside |
 | minutes            | `array`            | `[0, 15, 30, 45]`        | a list of minutes |
@@ -78,6 +78,24 @@ picker.setValue({ // meridiem -> am
   key: 'ampm',
   value: 'am'
 });
+```
+
+#### `picker.getValue(param)`
+The getValue method gets the value of the picker. It take one optional argument.
+```js
+picker.getValue();
+// result object
+{
+  ampm: "am"
+  fullResult: "12:45 am"
+  hours: "12"
+  minutes: "45"
+}
+// with parameter
+picker.getValue('hours'); // outputs hours, 12
+picker.getValue('minutes'); // outputs minutes, 45
+picker.getValue('am'); // outputs meridiem, am
+picker.getValue('fullResult'); // outputs full string, 12:45 am
 ```
 ### Events
 | Name        | Description  |
