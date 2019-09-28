@@ -1,6 +1,9 @@
-export class PickerHour {
+import { Base } from '../base/base';
+
+export class PickerHour extends Base {
 
     constructor(options) {
+        super(options);
         this.config = options;
         this.currentSelection = null;
         this.currentValue = null;
@@ -11,17 +14,14 @@ export class PickerHour {
         this.element = document.createElement('div');
         this.element.className = 'nj-hours-container';
 
-        this.createHeader();
+        super.createHeader({
+            className: 'nj-section-header',
+            innerText: 'Hours',
+            element: this.element
+        });
         this.createButtons();
 
         return this.element; // return the element to parent
-    }
-    // create header 
-    createHeader() {
-        let header = document.createElement('div');
-        header.className = 'nj-section-header';
-        header.innerText = 'Hours';
-        this.element.append(header);
     }
 
     // create am=pm button
@@ -33,44 +33,13 @@ export class PickerHour {
         let buttonStart = this.config.format == '12' ? 1 : 0;
 
         for (let i = buttonStart; i <= buttonLimit; i++) {
-            let item = document.createElement('div');
-            item.className = 'nj-item';
-            item.innerText = i;
-            item.setAttribute('data', i);
-            item.onclick = this.itemClick.bind(this, item);
-            buttonWrapper.append(item);
+            super.createItem({
+                container: buttonWrapper,
+                innerText: i
+            });
         }
 
         this.element.append(buttonWrapper);
     }
-
-    // item clicked
-    itemClick(item) {
-        if (this.currentSelection) { // remove previous selection
-            this.currentSelection.classList.remove('selected');
-        }
-        item.classList.add('selected');
-        this.currentSelection = item;
-        this.currentValue = item.getAttribute('data');
-    }
-
-    setValue() { }
-
-    // gets the value of am-pm
-    getValue() { 
-        return this.currentValue;
-    }
-
-    // resets the value
-    resetValue() {
-        if (this.currentSelection) {
-            this.currentSelection.classList.remove('selected');
-        }
-        this.currentSelection = null;
-        this.currentValue = null;
-    }
-
-    // validation
-    validateInput() { }
 
 }
