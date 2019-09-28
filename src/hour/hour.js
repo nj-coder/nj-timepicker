@@ -7,21 +7,10 @@ export class PickerHour extends Base {
         this.config = options;
         this.currentSelection = null;
         this.currentValue = null;
-    }
-
-    // build
-    build() {
-        this.element = document.createElement('div');
-        this.element.className = 'nj-hours-container';
-
-        super.createHeader({
-            className: 'nj-section-header',
-            innerText: 'Hours',
-            element: this.element
+        super.build({
+            type: 'hours'
         });
         this.createButtons();
-
-        return this.element; // return the element to parent
     }
 
     // create am=pm button

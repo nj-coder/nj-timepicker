@@ -7,22 +7,11 @@ export class PickerAMPM extends Base {
         this.config = options;
         this.currentSelection = null;
         this.currentValue = null;
-    }
-
-    // build
-    build() {
-        this.element = document.createElement('div');
-        this.element.className = 'nj-ampm-container';
-
-        super.createHeader({
-            className: 'nj-section-header',
-            innerText: 'AM/PM',
-            element: this.element
+        super.build({
+            type: 'ampm',
+            headerText: 'AM/PM'
         });
-        
         this.createButtons();
-
-        return this.element; // return the element to parent
     }
 
     // create am=pm button

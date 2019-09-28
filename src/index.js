@@ -49,7 +49,7 @@ export class NJPicker {
     // set the options for building the plugin
     build() {
         // attach the click to show picker
-        this.targetElement.addEventListener('click', this.showPicker.bind(this));
+        this.targetElement.addEventListener('click', this.show.bind(this));
 
         // create picker wrapper div
         this.wrapper = document.createElement('div');
@@ -59,7 +59,7 @@ export class NJPicker {
         // init the overlay
         this.overlay = new Background();
         if (this.config.clickOutsideToClose) { // check if clickOutsideToClose is true
-            this.overlay.addEventListener('click', this.hidePicker.bind(this));
+            this.overlay.addEventListener('click', this.hide.bind(this));
         }
         // append the overlay to the picker wrapper
         this.wrapper.append(this.overlay);
@@ -81,13 +81,13 @@ export class NJPicker {
     }
 
     // shows the picker
-    showPicker() {
+    show() {
         this.wrapper.classList.add('nj-picker-show');
         this.emitter.emit('show'); // emit plugin show event
     }
 
     // hides the picker
-    hidePicker() {
+    hide() {
         this.wrapper.classList.remove('nj-picker-show');
         this.emitter.emit('hide'); // emit the plugin hide event
     }
@@ -97,7 +97,7 @@ export class NJPicker {
         this.buttons = new buttons(this.config);
         this.buttons.on('save', () => {            
             this.emitter.emit('save', this.getValue());
-            this.hidePicker();
+            this.hide();
         });
         this.buttons.on('clear', () => {
             this.hours.resetValue(); // resets the hours
@@ -107,7 +107,7 @@ export class NJPicker {
         });
         this.buttons.on('close', () => {
             this.emitter.emit('close');
-            this.hidePicker();
+            this.hide();
         });
         this.container.append(this.buttons.build(this.config));
     }
@@ -115,20 +115,20 @@ export class NJPicker {
     // create hours contianer
     buildHours() {
         this.hours = new hours(this.config);
-        this.container.append(this.hours.build());
+        this.container.append(this.hours.element);
     }
 
     // create minutes contianer
     buildMinutes() {
         this.minutes = new minutes(this.config);
-        this.container.append(this.minutes.build());
+        this.container.append(this.minutes.element);
     }
 
     // create ampm contianer
     buildAMPM() {
         if (this.config.format == '12') {
             this.ampm = new ampm(this.config);
-            this.container.append(this.ampm.build());
+            this.container.append(this.ampm.element);
         }
     }
 
@@ -136,13 +136,16 @@ export class NJPicker {
     getValue(key) {
         let result = {
             hours: this.hours.getValue(),
-            minutes: this.minutes.getValue()
+            minutes: this.minutes.getValue(),
+            fullResult: undefined
         };
         if (this.config.format == '12') {
             result.ampm = this.ampm.getValue();
-            result.fullResult = `${result.hours}:${result.minutes} ${result.ampm}`;
+            if (result.hours && result.minutes && result.ampm)
+                result.fullResult = `${result.hours}:${result.minutes} ${result.ampm}`;
         } else {
-            result.fullResult = `${result.hours}:${result.minutes}`;
+            if (result.hours && result.minutes)
+                result.fullResult = `${result.hours}:${result.minutes}`;
         }
 
         if (key) {
@@ -153,8 +156,26 @@ export class NJPicker {
     }
     
     // set picker value
-    setValue(){
-        
+    setValue(input) {
+        if (typeof (input) == 'string') { // hh:mm am
+            try {
+                let split_1 = input.split(':');
+                if (typeof(split_1[0]) != 'undefined' && split_1[0] != '') {
+                    this.hours.setValue(split_1[0]);
+                }
+                if (typeof(split_1[1]) != 'undefined' && split_1[1] != '') {
+                    let split_2 = split_1[1].split(' ');
+                    this.minutes.setValue(split_2[0]);
+                    this.ampm.setValue(split_2[1]);
+                }
+            } catch (e) {
+                //
+            }
+        } else if (typeof (input) == 'object') {
+            if (input.key && typeof(input.value) != 'undefined' && this[input.key]) {
+                this[input.key].setValue(input.value.toString().toLowerCase());
+            }
+        }
     }
 
     // create an on method to mask emitter on

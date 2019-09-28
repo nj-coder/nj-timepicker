@@ -43,7 +43,8 @@
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); }
   .nj-picker .nj-section-header {
     margin-bottom: 4px;
-    font-weight: bold; }
+    font-weight: bold;
+    text-transform: capitalize; }
   .nj-picker .nj-item {
     border: 1px solid #ccc;
     padding: 0.4em;

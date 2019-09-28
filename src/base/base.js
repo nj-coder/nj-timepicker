@@ -6,6 +6,20 @@ export class Base {
         this.currentValue = null;
     }
 
+    // build contanier
+    build({
+        type,
+        headerText
+    }) {
+        this.element = document.createElement('div');
+        this.element.className = `nj-${type}-container`;
+        this.createHeader({
+            className: 'nj-section-header',
+            innerText: headerText || type,
+            element: this.element
+        });
+    }
+
     // create header 
     createHeader({
         className,
@@ -22,7 +36,7 @@ export class Base {
     createItem({
         container,
         innerText
-    }){
+    }) {
         let item = document.createElement('div');
         item.className = 'nj-item';
         item.innerText = innerText;
@@ -42,11 +56,18 @@ export class Base {
     }
 
     // sets the component value
-    setValue() { }
+    setValue(value) {
+        if (value) {
+            let el = this.element.querySelector(`div[data="${value}"]`);
+            if (el) {
+                this.itemClick(el);
+            }
+        }
+    }
 
-    // gets the value of am-pm
+    // gets the value of the component
     getValue() {
-        return this.currentValue || '';
+        return this.currentValue;
     }
     // resets the value
     resetValue() {
