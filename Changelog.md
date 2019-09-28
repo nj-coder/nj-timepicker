@@ -3,4 +3,6 @@ All notable changes to this project will be documented in this file. For transpa
 
 The below format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## v0.0.1
+## v0.0.100 [2019-10-15]
+### Added
+ - Inital layout and configuration
