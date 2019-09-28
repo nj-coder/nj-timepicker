@@ -22,6 +22,18 @@ npm install --save nj-timepicker
 ```
 <link rel="stylesheet" href="../dist/style.css">
 ```
+## Usage
+```js
+let container = document.querySelector('#container');
+// init picker
+var picker = new NJPicker({
+    targetID: 'container'
+});
+// on save event
+picker.on('save', function (data) {
+    container.textContent = data.fullResult;
+});
+```
 
 ## Configuration
 The plugin ships with various configuration and events that can be used to meet your requirements.
@@ -40,6 +52,10 @@ The plugin ships with various configuration and events that can be used to meet 
 NJ-Picker ships with methods that can be used to change the picker behaviour. These methods have strict input formatting which helps achive desired result
 
 #### `show()`
+This is methods triggers the show event and presents the picker on-screen.
+```js
+picker.show();
+```
 
 ### Events
 | Name        | Description  |
@@ -68,20 +84,6 @@ You can overridde the default theme by changing the following [css variables](ht
     --close-button-fc: #ffffff;
 }
 ```
-
-## Usage
-```js
-let container = document.querySelector('#container');
-// init picker
-var picker = new NJPicker({
-    targetID: 'container'
-});
-// on save event
-picker.on('save', function (data) {
-    container.textContent = data.fullResult;
-});
-```
-
 ## How to Contribute
 1. Clone repo and create a new branch: `$ git checkout https://github.com/nj-coder/nj-timepicker -b name_for_new_branch`.
 2. Make changes and test
