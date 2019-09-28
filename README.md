@@ -51,11 +51,10 @@ The plugin ships with various configuration and events that can be used to meet 
 ### Methods
 NJ-Picker ships with methods that can be used to change the picker behaviour. These methods have strict input formatting which helps achive desired result
 
-#### `show()`
+#### picker.show()
 This is methods triggers the show event and presents the picker on-screen.
-```js
-picker.show();
-```
+#### picker.hide()
+This is methods triggers the hide event and hides the picker.
 
 ### Events
 | Name        | Description  |
