@@ -63,9 +63,21 @@ The setValue method sets the value of the picker. It take one argument which can
 // as string
 picker.setValue('12'); // h -> 12
 picker.setValue('12:45'); // h -> 12, m - > 45 
-picker.setValue('12:45 am'); // // h -> 12, m - > 45, meridiem -> am
+picker.setValue('12:45 am'); // h -> 12, m - > 45, meridiem -> am
 
 // as object
+picker.setValue({ // h -> 12
+  key: 'hours',
+  value: 12
+});
+picker.setValue({ // m -> 45
+  key: 'minutes',
+  value: 45
+});
+picker.setValue({ // meridiem -> am
+  key: 'ampm',
+  value: 'am'
+});
 ```
 ### Events
 | Name        | Description  |
