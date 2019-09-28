@@ -53,7 +53,7 @@ NJ-Picker ships with methods that can be used to change the picker behaviour. Th
 
 #### picker.show()
 This is methods triggers the show event and presents the picker on-screen.
-#### picker.hide()
+#### `picker.hide()`
 This is methods triggers the hide event and hides the picker.
 
 ### Events
