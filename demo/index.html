@@ -67,7 +67,7 @@
     <script>
         (function () {
             let format_12 = document.querySelector('#format_12');
-            var format_12_picker = new NJPicker({
+            var format_12_picker = new NJTimePicker({
                 targetID: 'format_12'
             });
             format_12_picker.on('save', function (data) {
@@ -75,13 +75,14 @@
             });
 
             let format_24 = document.querySelector('#format_24');
-            var format_24_picker = new NJPicker({
+            var format_24_picker = new NJTimePicker({
                 targetEl: format_24,
                 format: '24'
             });
             format_24_picker.on('save', function (data) {
                 format_24.textContent = data.fullResult;
             });
+            window.picker = format_12_picker;
         })();
     </script>
 </body>

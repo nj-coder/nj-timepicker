@@ -6,6 +6,13 @@
   --close-button-bg: #ff0000;
   --close-button-fc: #ffffff; }
 
+.nj-picker .nj-ampm-container {
+  padding: 0 0.5em 0.5em 0.5em; }
+  .nj-picker .nj-ampm-container .nj-ampm-wrapper {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 0.5em; }
+
 .nj-overlay {
   position: fixed;
   width: 100%;
@@ -16,13 +23,6 @@
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 2; }
-
-.nj-picker .nj-ampm-container {
-  padding: 0 0.5em 0.5em 0.5em; }
-  .nj-picker .nj-ampm-container .nj-ampm-wrapper {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-gap: 0.5em; }
 
 .nj-picker {
   height: 100%;
@@ -40,7 +40,8 @@
     width: 50%;
     z-index: 10;
     border-radius: 4px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); }
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    overflow: hidden; }
   .nj-picker .nj-section-header {
     margin-bottom: 4px;
     font-weight: bold;

@@ -5,7 +5,7 @@ import { PickerMinute as minutes } from './minutes/minute';
 import { PickerAMPM as ampm } from './ampm/ampm';
 import { ActionButton as buttons } from './button/buttons';
 
-export class NJPicker {
+export class NJTimePicker {
 
     constructor(options = {}) {
         if (!options.targetEl && !options.targetID) {
@@ -186,6 +186,6 @@ export class NJPicker {
 
 }
 
-if (typeof global === 'object' && !global.NJPicker) {
-    global.NJPicker = NJPicker;
+if (typeof global === 'object' && !global.NJTimePicker) {
+    global.NJTimePicker = NJTimePicker;
 }
