@@ -3,6 +3,12 @@ All notable changes to this project will be documented in this file. For transpa
 
 The below format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## v0.0.100 [2019-10-15]
+## v1.1.100 [2019-09-28]
+### Added
+ - Base component
+ - Minutes configuration
+ - set and get value methods
+ 
+ ## v0.0.100 [2019-08-15]
 ### Added
  - Inital layout and configuration
