@@ -3,7 +3,11 @@ All notable changes to this project will be documented in this file. For transpa
 
 The below format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## v1.1.100 [2019-09-28]
+## v1.1.101 [Unreleased]
+### Fixed
+ - An issue which returns || when save is pressed without selecting any values
+ 
+ ## v1.1.100 [2019-09-28]
 ### Added
  - Base component
  - Minutes configuration
