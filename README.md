@@ -131,8 +131,8 @@ You can overridde the default theme by changing the following [css variables](ht
 2. Make changes and test
 3. Submit Pull Request with comprehensive description of changes
 
-## Versioning
-NJ-TimePicker uses [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository]https://github.com/nj-coder/nj-timepicker/tags). 
+## Releases and Changes
+Check out the [Releases](https://github.com/nj-coder/nj-timepicker/releases) and [Change Logs](https://github.com/nj-coder/nj-timepicker/blob/master/Changelog.md) for more information. 
 
 ## Copyright and License
 [The MIT license](LICENSE.md) 
