@@ -3,7 +3,7 @@ All notable changes to this project will be documented in this file. For transpa
 
 The below format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## v1.1.101 [Unreleased]
+## v1.1.101 [Unreleased] 
 ### Fixed
  - An issue which returns || when save is pressed without selecting any values
  
