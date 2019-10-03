@@ -3,7 +3,7 @@
   <img src="http://nj-coder.com/nj-libs/nj-timepicker/images/screen-shot.png">
 </p>
 
-NJ-TimePicker is a pure JavaScript based timepicker that enables you to select time both in 12-hour and 24-hour format in a web and mobile friendly user interface. Checkout the [DEMO HERE](http://nj-coder.com/nj-libs/nj-timepicker/index.html)
+NJ-TimePicker is a pure JavaScript based timepicker that enables you to select time both in 12-hour and 24-hour format in a web and mobile friendly user interface. Checkout the [DEMO HERE](http://nj-coder.com/nj-libs/nj-timepicker/index.html) or [FIDDLE IT OUT](https://jsfiddle.net/nidhingeorgejoseph/5dc0trb9/)
 
 ## Table of Contents
 
@@ -21,8 +21,8 @@ npm install --save nj-timepicker
 ```
 ### Direct link
 ```
-<script src="http://nj-coder.com/nj-libs/nj-timepicker/dist/scripts.min.js"></script>
-<link rel="stylesheet" href="http://nj-coder.com/nj-libs/nj-timepicker/dist/style.min.css">
+<script src="https://nj-coder.com/nj-libs/nj-timepicker/dist/scripts.min.js"></script>
+<link rel="stylesheet" href="https://nj-coder.com/nj-libs/nj-timepicker/dist/style.min.css">
 ```
 ## Usage
 ```js
