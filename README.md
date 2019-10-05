@@ -49,6 +49,8 @@ The plugin ships with various configuration and events that can be used to meet 
 | format             | ```12 \| 24```     | ```12```                 | picker display format |
 | clickOutsideToClose| ```true \| false```| ```true```               | to close the picker when clicked outside |
 | minutes            | `array`            | `[0, 15, 30, 45]`        | a list of minutes |
+| disabledHours      | `array`            | `[]`                     | a list of disabled Hours |
+| disabledMinutes    | `array`            | `[]`                     | a list of disabled Minutes |
 
 ### Methods
 NJ-TimePicker ships with methods that can be used to change the picker behaviour. These methods have strict input formatting which helps achive desired result
