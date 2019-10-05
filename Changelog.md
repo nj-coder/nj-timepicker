@@ -15,6 +15,6 @@ The below format is based on [Keep a Changelog](http://keepachangelog.com/).
  - Minutes configuration
  - set and get value methods
  
-## v0.0.100 2019-08-15
+## v0.0.100 - 2019-08-15
 ### Added
  - Inital layout and configuration
