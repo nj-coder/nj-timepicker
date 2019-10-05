@@ -84,6 +84,7 @@
     background: var(--close-button-bg);
     color: var(--close-button-fc); }
 
+
 .nj-picker .nj-hours-container {
   padding: 0.5em; }
   .nj-picker .nj-hours-container .nj-hours-wrapper {

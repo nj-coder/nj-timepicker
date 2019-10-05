@@ -29,8 +29,8 @@ export class NJTimePicker {
             clickOutsideToClose: true,
             format: '12',
             minutes: [0, 15, 30, 45],
-            disabledMinutes : [45],
-            disabledHours : [1]
+            disabledMinutes : [],
+            disabledHours : []
         };
     }
 
