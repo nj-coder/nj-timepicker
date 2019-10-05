@@ -6,6 +6,7 @@ The below format is based on [Keep a Changelog](http://keepachangelog.com/).
 ## [Unreleased] 
 ### Added
  - `disabledHours` and `disabledMinutes` config
+ - `headerText` config
 ### Fixed
  - An issue which returns || when save is pressed without selecting any values
  
