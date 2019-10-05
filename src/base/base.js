@@ -35,18 +35,24 @@ export class Base {
     // create each item 
     createItem({
         container,
-        innerText
+        innerText,
+        disabled
     }) {
         let item = document.createElement('div');
         item.className = 'nj-item';
         item.innerText = innerText;
         item.setAttribute('data', innerText.toString().toLowerCase());
+        if (disabled) {
+            item.setAttribute('disabled', 'disabled');
+        }
         item.onclick = this.itemClick.bind(this, item);
         container.append(item);
     }
 
     // item clicked
     itemClick(item) {
+        if (item.hasAttribute('disabled'))
+            return;
         if (this.currentSelection) { // remove previous selection
             this.currentSelection.classList.remove('selected');
         }

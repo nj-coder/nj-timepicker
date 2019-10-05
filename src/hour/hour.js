@@ -20,11 +20,13 @@ export class PickerHour extends Base {
 
         let buttonLimit = this.config.format == '12' ? 12 : 23;
         let buttonStart = this.config.format == '12' ? 1 : 0;
+        let disabledHours = Array.isArray(this.config.disabledHours) ? this.config.disabledHours : [];
 
         for (let i = buttonStart; i <= buttonLimit; i++) {
             super.createItem({
                 container: buttonWrapper,
-                innerText: i
+                innerText: i,
+                disabled: disabledHours.includes(i)
             });
         }
 

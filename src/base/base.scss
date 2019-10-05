@@ -35,6 +35,12 @@
             cursor: pointer;
             background: rgba(0, 0, 0, 0.1);
         }
+
+        &[disabled] {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background: inherit !important;
+        }
     }
 
     .nj-item.selected {
