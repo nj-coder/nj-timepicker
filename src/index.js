@@ -3,6 +3,7 @@ import NanoEvents from 'nanoevents';
 import { PickerHour as hours } from './hour/hour';
 import { PickerMinute as minutes } from './minutes/minute';
 import { PickerAMPM as ampm } from './ampm/ampm';
+import { Header } from './header/header';
 import { ActionButton as buttons } from './button/buttons';
 
 export class NJTimePicker {
@@ -23,14 +24,15 @@ export class NJTimePicker {
     // plugin default config
     get defaultConfig() {
         return {
-            id: Math.random().toString(36).substring(7),
-            targetEl: null,
-            targetID: null,
             clickOutsideToClose: true,
+            disabledMinutes: [],
+            disabledHours: [],
             format: '12',
+            headerText: '',
+            id: Math.random().toString(36).substring(7),
             minutes: [0, 15, 30, 45],
-            disabledMinutes : [],
-            disabledHours : []
+            targetEl: null,
+            targetID: null
         };
     }
 
@@ -70,6 +72,12 @@ export class NJTimePicker {
         // create the container
         this.container = document.createElement('div');
         this.container.classList.add('nj-picker-container');
+
+        // create header
+        if (this.config.headerText) {
+            this.header = new Header(this.config);
+            this.container.append(this.header.element);
+        }
 
         this.buildHours();
         this.buildMinutes();
@@ -192,5 +200,5 @@ export class NJTimePicker {
 
 if (typeof global === 'object' && !global.NJTimePicker) {
     global.NJTimePicker = NJTimePicker;
-    global.NJTimePicker.version = 'v1.1.101';
+    global.NJTimePicker.version = 'v1.2.100';
 }

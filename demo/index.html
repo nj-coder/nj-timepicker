@@ -68,7 +68,8 @@
         (function () {
             let format_12 = document.querySelector('#format_12');
             var format_12_picker = new NJTimePicker({
-                targetID: 'format_12'
+                targetID: 'format_12',
+                headerText: '12-Hour Picker',
             });
             format_12_picker.on('save', function (data) {
                 if (data.fullResult)
@@ -78,6 +79,7 @@
             let format_24 = document.querySelector('#format_24');
             var format_24_picker = new NJTimePicker({
                 targetEl: format_24,
+                headerText: '24-Hour Picker',
                 format: '24'
             });
             format_24_picker.on('save', function (data) {
