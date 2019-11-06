@@ -1,6 +1,6 @@
 {
   "name": "nj-timepicker",
-  "version": "1.2.100",
+  "version": "1.2.102",
   "description": "A simple and user-friendly timepicker using pure JavaScript",
   "main": "index.js",
   "scripts": {
