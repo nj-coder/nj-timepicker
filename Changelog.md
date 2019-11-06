@@ -9,13 +9,14 @@ The below format is based on [Keep a Changelog](http://keepachangelog.com/).
  - `headerText` config
 ### Fixed
  - An issue which returns || when save is pressed without selecting any values
+ - [FOR #3](https://github.com/152hq/QicForms/issues/3) DIV renders at top of page, irregardless of page scrolling
  
-## v1.1.100 - 2019-09-28
+## [1.1.100] - 2019-09-28
 ### Added
  - Base component
  - Minutes configuration
  - set and get value methods
  
-## v0.0.100 - 2019-08-15
+## [0.0.100] - 2019-08-15
 ### Added
  - Inital layout and configuration
