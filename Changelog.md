@@ -3,7 +3,7 @@ All notable changes to this project will be documented in this file. For transpa
 
 The below format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## [Unreleased] 
+## [1.2.102] - 2019-11-07 
 ### Added
  - `disabledHours` and `disabledMinutes` config
  - `headerText` config
