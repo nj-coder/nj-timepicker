@@ -5,7 +5,7 @@ The below format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [Unreleased]
 ### Added
- - enhancement - auto fill value if the target element is an input ([0d00cdd](https://github.com/nj-coder/nj-timepicker/commit/0d00cdd)) closes #4
+ - enhancement - auto fill value if the target element is an input ([0d00cdd](https://github.com/nj-coder/nj-timepicker/commit/0d00cdd)) closes [#4](https://github.com/nj-coder/nj-timepicker/issues/4)
 
 ## [1.2.102] - 2019-11-07 
 ### Added
@@ -13,7 +13,7 @@ The below format is based on [Keep a Changelog](http://keepachangelog.com/).
  - `headerText` config
 ### Fixed
  - An issue which returns || when save is pressed without selecting any values
- - fix - DIV renders at top of page, irregardless of page scrolling ([81de097](https://github.com/nj-coder/nj-timepicker/commit/81de097)) closes #3
+ - fix - DIV renders at top of page, irregardless of page scrolling ([81de097](https://github.com/nj-coder/nj-timepicker/commit/81de097)) closes [#3](https://github.com/nj-coder/nj-timepicker/issues/3)
 
 ## [1.1.100] - 2019-09-28
 ### Added
