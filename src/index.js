@@ -107,6 +107,10 @@ export class NJTimePicker {
     buildButtons() {
         this.buttons = new buttons(this.config);
         this.buttons.on('save', () => {
+            // set the value of the target if its an input 
+            if (this.targetElement.type == 'text' && this.targetElement.nodeName === 'INPUT') {
+                this.targetElement.value = this.getValue().fullResult;
+            }
             this.emitter.emit('save', this.getValue());
             this.hide();
         });
@@ -200,5 +204,5 @@ export class NJTimePicker {
 
 if (typeof global === 'object' && !global.NJTimePicker) {
     global.NJTimePicker = NJTimePicker;
-    global.NJTimePicker.version = 'v1.2.102';
+    global.NJTimePicker.version = 'v1.2.103';
 }

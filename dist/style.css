@@ -1,0 +1,108 @@
+:root {
+  --save-button-bg: #008000;
+  --save-button-fc: #ffffff;
+  --clear-button-bg: #ffa500;
+  --clear-button-fc: #ffffff;
+  --close-button-bg: #ff0000;
+  --close-button-fc: #ffffff;
+  --header-text-color: #ffffff;
+  --header-text-align: left;
+  --header-bg: #414141; }
+
+.nj-picker .nj-ampm-container {
+  padding: 0 0.5em 0.5em 0.5em; }
+  .nj-picker .nj-ampm-container .nj-ampm-wrapper {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 0.5em; }
+
+.nj-overlay {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2; }
+
+.nj-picker {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  align-items: center;
+  justify-content: center; }
+  .nj-picker .nj-picker-container {
+    background: #fff;
+    max-width: 400px;
+    min-width: 350px;
+    width: 50%;
+    z-index: 10;
+    border-radius: 4px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    overflow: hidden; }
+  .nj-picker .nj-section-header {
+    margin-bottom: 4px;
+    font-weight: bold;
+    text-transform: capitalize; }
+  .nj-picker .nj-item {
+    border: 1px solid #ccc;
+    padding: 0.4em;
+    text-align: center;
+    border-radius: 4px; }
+    .nj-picker .nj-item:hover {
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.1); }
+    .nj-picker .nj-item[disabled] {
+      opacity: 0.5;
+      cursor: not-allowed;
+      background: inherit !important; }
+  .nj-picker .nj-item.selected {
+    background: blue;
+    color: #fff;
+    border-color: blue; }
+
+.nj-picker-show {
+  display: flex !important; }
+
+.nj-picker .nj-header-container {
+  padding: 0.8em;
+  background: var(--header-bg);
+  color: var(--header-text-color);
+  text-align: var(--header-text-alig); }
+
+.nj-picker .nj-action-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); }
+  .nj-picker .nj-action-container .nj-action-button {
+    padding: 0.8em;
+    text-align: center;
+    color: #fff;
+    cursor: pointer; }
+  .nj-picker .nj-action-container .nj-action-save {
+    background: var(--save-button-bg);
+    color: var(--save-button-fc); }
+  .nj-picker .nj-action-container .nj-action-clear {
+    background: var(--clear-button-bg);
+    color: var(--clear-button-fc); }
+  .nj-picker .nj-action-container .nj-action-close {
+    background: var(--close-button-bg);
+    color: var(--close-button-fc); }
+
+.nj-picker .nj-hours-container {
+  padding: 0.5em; }
+  .nj-picker .nj-hours-container .nj-hours-wrapper {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 0.5em; }
+
+.nj-picker .nj-minutes-container {
+  padding: 0 0.5em 0.5em 0.5em; }
+  .nj-picker .nj-minutes-container .nj-minutes-wrapper {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 0.5em; }
