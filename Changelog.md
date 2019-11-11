@@ -5,7 +5,7 @@ The below format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [Unreleased]
 ### Added
- - [FOR #4](https://github.com/nj-coder/nj-timepicker/issues/4) Fill a input field ([0d00cdd](https://github.com/nj-coder/nj-timepicker/commit/0d00cdd) closes #4
+ - [FOR #4](https://github.com/nj-coder/nj-timepicker/issues/4) Fill a input field ([0d00cdd](https://github.com/nj-coder/nj-timepicker/commit/0d00cdd)) closes #4
 
 ## [1.2.102] - 2019-11-07 
 ### Added
