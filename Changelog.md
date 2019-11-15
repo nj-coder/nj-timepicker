@@ -6,6 +6,11 @@ The below format is based on [Keep a Changelog](http://keepachangelog.com/).
 ## [Unreleased]
 ### Added
  - enhancement - auto fill value if the target element is an input ([0d00cdd](https://github.com/nj-coder/nj-timepicker/commit/0d00cdd)) closes [#4](https://github.com/nj-coder/nj-timepicker/issues/4)
+ - enhancement - picker texts can be configured by providing in the `texts` configuration ([4409f99](https://github.com/nj-coder/nj-timepicker/commit/4409f99)) closes [#5](https://github.com/nj-coder/nj-timepicker/issues/5)
+ - enhancement - added more variables for theming
+
+### Deprecated
+- `headerText` instead use `texts` to configure the header 
 
 ## [1.2.102] - 2019-11-07 
 ### Added
