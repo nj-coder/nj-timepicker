@@ -9,7 +9,7 @@ export class PickerAMPM extends Base {
         this.currentValue = null;
         super.build({
             type: 'ampm',
-            headerText: 'AM/PM'
+            headerText: this.config.texts.ampm || 'AM/PM'
         });
         this.createButtons();
     }

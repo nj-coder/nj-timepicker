@@ -9,9 +9,9 @@
     justify-content: center;
 
     .nj-picker-container {
-        background: #fff;
-        max-width: 400px;
-        min-width: 350px;
+        background: var(--picker-bg);
+        max-width: var(--picker-max-width);
+        min-width: var(--picker-min-width);
         width: 50%;
         z-index: 10;
         border-radius: 4px;
@@ -44,9 +44,9 @@
     }
 
     .nj-item.selected {
-        background: blue;
-        color: #fff;
-        border-color: blue;
+        background: var(--picker-selection-bg);
+        color: var(--picker-selection-fc);
+        border-color: var(--picker-selection-bg);
     }
 }
 

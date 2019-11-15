@@ -8,7 +8,8 @@ export class PickerHour extends Base {
         this.currentSelection = null;
         this.currentValue = null;
         super.build({
-            type: 'hours'
+            type: 'hours',
+            headerText: this.config.texts.hours
         });
         this.createButtons();
     }

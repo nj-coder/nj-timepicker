@@ -12,8 +12,11 @@ export class NJTimePicker {
         if (!options.targetEl && !options.targetID) {
             throw ('NJPicker requires a target element(targetEl) or target element ID(targetID)');
         }
+       
         // merge options with default config
-        this.config = Object.assign(this.defaultConfig, options);
+        this.config = this.extend({
+            options
+        });
         // checks for a valid target element
         this.checkTarget();
 
@@ -28,6 +31,15 @@ export class NJTimePicker {
             disabledMinutes: [],
             disabledHours: [],
             format: '12',
+            texts: {
+                header: '',
+                hours: 'Hours',
+                minutes: 'Minutes',
+                close: 'Close',
+                save: 'Save',
+                clear: 'Clear',
+                ampm: 'AM/PM'
+            },
             headerText: '',
             id: Math.random().toString(36).substring(7),
             minutes: [0, 15, 30, 45],
@@ -36,6 +48,26 @@ export class NJTimePicker {
         };
     }
 
+    // merge user config with defaults
+    extend({
+        target = {},
+        options,
+        defaults = this.defaultConfig
+    }) {
+        Object.keys(defaults).forEach(key => {
+            if (typeof (defaults[key]) == 'object' && key == 'texts') {
+                target[key] = {};
+                Object.keys(defaults[key]).forEach(e => {
+                    target[key][e] = (options[key] && options[key][e]) ?
+                        options[key][e] : defaults[key][e];
+                });
+            } else {
+                target[key] = options[key] || defaults[key];
+            }
+        });
+        
+        return target;
+    }
     // check if the target element exist in the dom
     checkTarget() {
         if (this.config.targetEl) { // check for valid dom element
@@ -74,7 +106,7 @@ export class NJTimePicker {
         this.container.classList.add('nj-picker-container');
 
         // create header
-        if (this.config.headerText) {
+        if (this.config.headerText || this.config.texts.header) {
             this.header = new Header(this.config);
             this.container.append(this.header.element);
         }
@@ -204,5 +236,5 @@ export class NJTimePicker {
 
 if (typeof global === 'object' && !global.NJTimePicker) {
     global.NJTimePicker = NJTimePicker;
-    global.NJTimePicker.version = 'v1.2.103';
+    global.NJTimePicker.version = 'v1.3.100';
 }

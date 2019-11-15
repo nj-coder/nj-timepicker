@@ -12,7 +12,14 @@
     --close-button-fc: #ffffff;
 
     // header 
-    --header-text-color: #ffffff;  
+    --header-text-color: #ffffff;
     --header-text-align: left;
     --header-bg: #414141;
+
+    // container
+    --picker-bg: #fff;
+    --picker-selection-bg: #0000ff;
+    --picker-selection-fc: #fff;
+    --picker-max-width: 400px;
+    --picker-min-width: 350px;
 }

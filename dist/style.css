@@ -7,7 +7,12 @@
   --close-button-fc: #ffffff;
   --header-text-color: #ffffff;
   --header-text-align: left;
-  --header-bg: #414141; }
+  --header-bg: #414141;
+  --picker-bg: #fff;
+  --picker-selection-bg: #0000ff;
+  --picker-selection-fc: #fff;
+  --picker-max-width: 400px;
+  --picker-min-width: 350px; }
 
 .nj-picker .nj-ampm-container {
   padding: 0 0.5em 0.5em 0.5em; }
@@ -37,9 +42,9 @@
   align-items: center;
   justify-content: center; }
   .nj-picker .nj-picker-container {
-    background: #fff;
-    max-width: 400px;
-    min-width: 350px;
+    background: var(--picker-bg);
+    max-width: var(--picker-max-width);
+    min-width: var(--picker-min-width);
     width: 50%;
     z-index: 10;
     border-radius: 4px;
@@ -62,18 +67,12 @@
       cursor: not-allowed;
       background: inherit !important; }
   .nj-picker .nj-item.selected {
-    background: blue;
-    color: #fff;
-    border-color: blue; }
+    background: var(--picker-selection-bg);
+    color: var(--picker-selection-fc);
+    border-color: var(--picker-selection-bg); }
 
 .nj-picker-show {
   display: flex !important; }
-
-.nj-picker .nj-header-container {
-  padding: 0.8em;
-  background: var(--header-bg);
-  color: var(--header-text-color);
-  text-align: var(--header-text-alig); }
 
 .nj-picker .nj-action-container {
   display: grid;
@@ -92,6 +91,12 @@
   .nj-picker .nj-action-container .nj-action-close {
     background: var(--close-button-bg);
     color: var(--close-button-fc); }
+
+.nj-picker .nj-header-container {
+  padding: 0.8em;
+  background: var(--header-bg);
+  color: var(--header-text-color);
+  text-align: var(--header-text-alig); }
 
 .nj-picker .nj-hours-container {
   padding: 0.5em; }

@@ -22,7 +22,7 @@ export class ActionButton {
     createSaveButton() {
         let save = document.createElement('div');
         save.className = 'nj-action-button nj-action-save';
-        save.innerText = 'Save';
+        save.innerText = this.config.texts.save || 'Save';
         save.onclick = () => {
             this.emitter.emit('save'); // emit plugin save event
         }; // attach click
@@ -33,7 +33,7 @@ export class ActionButton {
     createClearButton() {
         let clear = document.createElement('div');
         clear.className = 'nj-action-button nj-action-clear';
-        clear.innerText = 'Clear';
+        clear.innerText = this.config.texts.clear || 'Clear';
         clear.onclick = () => {
             this.emitter.emit('clear'); // emit plugin clear event
         };
@@ -44,7 +44,7 @@ export class ActionButton {
     createCloseButton() {
         let close = document.createElement('div');
         close.className = 'nj-action-button nj-action-close';
-        close.innerText = 'Close';
+        close.innerText = this.config.texts.close || 'Close';
         close.onclick = () => {
             this.emitter.emit('close'); // emit plugin close event
         };
