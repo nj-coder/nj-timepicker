@@ -47,7 +47,7 @@ The plugin ships with various configuration and events that can be used to meet 
 | minutes            | `array`            | `[0, 15, 30, 45]`        | a list of minutes |
 | disabledHours      | `array`            | `[]`                     | a list of disabled Hours |
 | disabledMinutes    | `array`            | `[]`                     | a list of disabled Minutes |
-| texts              | `object`           | `{`<br>`   header: ''`<br>`}`                       | picker texts |
+| texts              | `object`           | `{`<br>&nbsp`&nbspheader: ''`<br>`}`                       | picker texts |
 
 ### Methods
 NJ-TimePicker ships with methods that can be used to change the picker behaviour. These methods have strict input formatting which helps achive desired result
