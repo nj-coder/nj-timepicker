@@ -48,8 +48,41 @@
         color: var(--picker-selection-fc);
         border-color: var(--picker-selection-bg);
     }
+
+    &.nj-picker-show {
+        display: flex !important;
+
+        .nj-picker-container {
+            animation: zoomin-picker 0.4s;
+        }
+    }
 }
 
-.nj-picker-show {
-    display: flex !important;
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+        @content;
+    }
+
+    @-moz-keyframes #{$name} {
+        @content;
+    }
+
+    @-ms-keyframes #{$name} {
+        @content;
+    }
+
+    @keyframes #{$name} {
+        @content;
+    }
 }
+
+@include keyframes(zoomin-picker) {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+

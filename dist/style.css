@@ -70,9 +70,34 @@
     background: var(--picker-selection-bg);
     color: var(--picker-selection-fc);
     border-color: var(--picker-selection-bg); }
+  .nj-picker.nj-picker-show {
+    display: flex !important; }
+    .nj-picker.nj-picker-show .nj-picker-container {
+      animation: zoomin-picker 0.4s; }
 
-.nj-picker-show {
-  display: flex !important; }
+@-webkit-keyframes zoomin-picker {
+  0% {
+    transform: scale(0); }
+  100% {
+    transform: scale(1); } }
+
+@-moz-keyframes zoomin-picker {
+  0% {
+    transform: scale(0); }
+  100% {
+    transform: scale(1); } }
+
+@-ms-keyframes zoomin-picker {
+  0% {
+    transform: scale(0); }
+  100% {
+    transform: scale(1); } }
+
+@keyframes zoomin-picker {
+  0% {
+    transform: scale(0); }
+  100% {
+    transform: scale(1); } }
 
 .nj-picker .nj-action-container {
   display: grid;
