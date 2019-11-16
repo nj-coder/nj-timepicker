@@ -18,15 +18,15 @@ export class PickerMinute extends Base {
 
         let minutes = this.config.minutes || [0, 15, 30, 45];
         let disabledMinutes = Array.isArray(this.config.disabledMinutes) ? this.config.disabledMinutes : [];
-        for (let i = 0; i < minutes.length; i++) {
-            if (typeof (minutes[i]) == 'number' && minutes[i] < 60) {
+        minutes.forEach(minute => {
+            if (typeof (minute) == 'number' && minute < 60) {
                 super.createItem({
                     container: buttonWrapper,
-                    innerText: minutes[i],
-                    disabled: (disabledMinutes).includes(minutes[i])
+                    innerText: minute,
+                    disabled: (disabledMinutes).includes(minute)
                 });
             }
-        }
+        });
 
         this.element.append(buttonWrapper);
     }

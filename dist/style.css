@@ -99,6 +99,12 @@
   100% {
     transform: scale(1); } }
 
+.nj-picker .nj-header-container {
+  padding: 0.8em;
+  background: var(--header-bg);
+  color: var(--header-text-color);
+  text-align: var(--header-text-alig); }
+
 .nj-picker .nj-action-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr); }
@@ -123,12 +129,6 @@
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-gap: 0.5em; }
-
-.nj-picker .nj-header-container {
-  padding: 0.8em;
-  background: var(--header-bg);
-  color: var(--header-text-color);
-  text-align: var(--header-text-alig); }
 
 .nj-picker .nj-minutes-container {
   padding: 0 0.5em 0.5em 0.5em; }
