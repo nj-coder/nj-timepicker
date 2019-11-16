@@ -9,16 +9,13 @@ import { ActionButton as buttons } from './button/buttons';
 export class NJTimePicker {
 
     constructor(options = {}) {
-        if (!options.targetEl && !options.targetID) {
-            throw ('NJPicker requires a target element(targetEl) or target element ID(targetID)');
-        }
-       
+        // checks for a valid target element
+        this.checkTarget(options.targetEl || options.targetID);
+
         // merge options with default config
         this.config = this.extend({
             options
         });
-        // checks for a valid target element
-        this.checkTarget();
 
         this.emitter = new NanoEvents();
         this.build(); // build the picker
@@ -65,21 +62,17 @@ export class NJTimePicker {
                 target[key] = options[key] || defaults[key];
             }
         });
-        
+
         return target;
     }
     // check if the target element exist in the dom
-    checkTarget() {
-        if (this.config.targetEl) { // check for valid dom element
-            if (this.config.targetEl.nodeType != Node.ELEMENT_NODE) {
-                throw ('targetEl does not exist in the dom');
-            }
-            this.targetElement = this.config.targetEl;
-        } else if (this.config.targetID) { // check for valid dom element with ID targetID
-            this.targetElement = document.querySelector(`#${this.config.targetID}`);
-            if (!this.targetElement) {
-                throw ('targetID does not exist in the dom');
-            }
+    checkTarget(el) {
+        if (el instanceof HTMLElement) { // check for valid dom element
+            this.targetElement = el;
+        } else if (document.querySelector(`#${el}`)) { // check for valid dom element with ID targetID
+            this.targetElement = document.querySelector(`#${el}`);
+        } else {
+            throw ('NJPicker requires a valid target element(targetEl) or target element ID(targetID)');
         }
     }
 
@@ -111,9 +104,7 @@ export class NJTimePicker {
             this.container.append(this.header.element);
         }
 
-        this.buildHours();
-        this.buildMinutes();
-        this.buildAMPM(); // configure ampm container
+        this.buildItems();
         this.buildButtons(); // configure picker buttons
 
         // attach the picker container to the wrapper
@@ -121,18 +112,6 @@ export class NJTimePicker {
         // attach the picker wrapper to the dom
         document.body.append(this.wrapper);
         this.emitter.emit('ready'); // emit the plugin ready event
-    }
-
-    // shows the picker
-    show() {
-        this.wrapper.classList.add('nj-picker-show');
-        this.emitter.emit('show'); // emit plugin show event
-    }
-
-    // hides the picker
-    hide() {
-        this.wrapper.classList.remove('nj-picker-show');
-        this.emitter.emit('hide'); // emit the plugin hide event
     }
 
     // create buttons contianer
@@ -161,20 +140,15 @@ export class NJTimePicker {
         this.container.append(this.buttons.build(this.config));
     }
 
-    // create hours contianer
-    buildHours() {
+    // build individual items
+    buildItems() {
+        // create hours contianer
         this.hours = new hours(this.config);
         this.container.append(this.hours.element);
-    }
-
-    // create minutes contianer
-    buildMinutes() {
+        // create minutes contianer
         this.minutes = new minutes(this.config);
         this.container.append(this.minutes.element);
-    }
-
-    // create ampm contianer
-    buildAMPM() {
+        // create ampm contianer
         if (this.config.format == '12') {
             this.ampm = new ampm(this.config);
             this.container.append(this.ampm.element);
@@ -225,6 +199,18 @@ export class NJTimePicker {
                 this[input.key].setValue(input.value.toString().toLowerCase());
             }
         }
+    }
+
+    // shows the picker
+    show() {
+        this.wrapper.classList.add('nj-picker-show');
+        this.emitter.emit('show'); // emit plugin show event
+    }
+
+    // hides the picker
+    hide() {
+        this.wrapper.classList.remove('nj-picker-show');
+        this.emitter.emit('hide'); // emit the plugin hide event
     }
 
     // create an on method to mask emitter on

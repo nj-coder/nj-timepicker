@@ -14,13 +14,6 @@
   --picker-max-width: 400px;
   --picker-min-width: 350px; }
 
-.nj-picker .nj-ampm-container {
-  padding: 0 0.5em 0.5em 0.5em; }
-  .nj-picker .nj-ampm-container .nj-ampm-wrapper {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-gap: 0.5em; }
-
 .nj-overlay {
   height: 100vh;
   width: 100vw;
@@ -31,6 +24,13 @@
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 2; }
+
+.nj-picker .nj-ampm-container {
+  padding: 0 0.5em 0.5em 0.5em; }
+  .nj-picker .nj-ampm-container .nj-ampm-wrapper {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 0.5em; }
 
 .nj-picker {
   height: 100vh;
@@ -117,18 +117,18 @@
     background: var(--close-button-bg);
     color: var(--close-button-fc); }
 
-.nj-picker .nj-header-container {
-  padding: 0.8em;
-  background: var(--header-bg);
-  color: var(--header-text-color);
-  text-align: var(--header-text-alig); }
-
 .nj-picker .nj-hours-container {
   padding: 0.5em; }
   .nj-picker .nj-hours-container .nj-hours-wrapper {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-gap: 0.5em; }
+
+.nj-picker .nj-header-container {
+  padding: 0.8em;
+  background: var(--header-bg);
+  color: var(--header-text-color);
+  text-align: var(--header-text-alig); }
 
 .nj-picker .nj-minutes-container {
   padding: 0 0.5em 0.5em 0.5em; }

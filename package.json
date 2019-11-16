@@ -11,8 +11,8 @@
     "type": "git",
     "url": "git+https://github.com/nj-coder/nj-timepicker.git"
   },
-  "publishConfig": { 
-    "registry": "https://npm.pkg.github.com/" 
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   },
   "keywords": [
     "timepicker",

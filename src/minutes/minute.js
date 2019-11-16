@@ -4,9 +4,6 @@ export class PickerMinute extends Base {
 
     constructor(options) {
         super(options);
-        this.config = options;
-        this.currentSelection = null;
-        this.currentValue = null;
         super.build({
             type: 'minutes',
             headerText: this.config.texts.minutes
@@ -26,7 +23,7 @@ export class PickerMinute extends Base {
                 super.createItem({
                     container: buttonWrapper,
                     innerText: minutes[i],
-                    disabled: disabledMinutes.includes(minutes[i])
+                    disabled: (disabledMinutes).includes(minutes[i])
                 });
             }
         }

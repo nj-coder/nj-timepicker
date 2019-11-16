@@ -4,9 +4,6 @@ export class PickerHour extends Base {
 
     constructor(options) {
         super(options);
-        this.config = options;
-        this.currentSelection = null;
-        this.currentValue = null;
         super.build({
             type: 'hours',
             headerText: this.config.texts.hours
@@ -23,7 +20,7 @@ export class PickerHour extends Base {
         let buttonStart = this.config.format == '12' ? 1 : 0;
         let disabledHours = Array.isArray(this.config.disabledHours) ? this.config.disabledHours : [];
 
-        for (let i = buttonStart; i <= buttonLimit; i++) {
+        for (let i = (buttonStart); i <= buttonLimit; i++) {
             super.createItem({
                 container: buttonWrapper,
                 innerText: i,

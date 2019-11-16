@@ -2,8 +2,7 @@ export class Base {
 
     constructor(options) {
         this.config = options;
-        this.currentSelection = null;
-        this.currentValue = null;
+        this.resetValue();
     }
 
     // build contanier
@@ -63,11 +62,9 @@ export class Base {
 
     // sets the component value
     setValue(value) {
-        if (value) {
-            let el = this.element.querySelector(`div[data="${value}"]`);
-            if (el) {
-                this.itemClick(el);
-            }
+        let el = this.element.querySelector(`div[data="${value}"]`);
+        if (el) {
+            this.itemClick(el);
         }
     }
 
@@ -80,7 +77,6 @@ export class Base {
         if (this.currentSelection) {
             this.currentSelection.classList.remove('selected');
         }
-        this.currentSelection = null;
-        this.currentValue = null;
+        this.currentSelection = this.currentValue = null;
     }
 }

@@ -12,43 +12,33 @@ export class ActionButton {
         this.element = document.createElement('div');
         this.element.className = 'nj-action-container';
 
-        this.createSaveButton();
-        this.createClearButton();
-        this.createCloseButton();
+        this.createButton({
+            type: 'save',
+            text: this.config.texts.save || 'Save'
+        });
+        this.createButton({
+            type: 'clear',
+            text: this.config.texts.clear || 'Clear'
+        });
+        this.createButton({
+            type: 'close',
+            text: this.config.texts.close || 'Close'
+        });
 
         return this.element; // return the element to parent
     }
-    // create save button
-    createSaveButton() {
-        let save = document.createElement('div');
-        save.className = 'nj-action-button nj-action-save';
-        save.innerText = this.config.texts.save || 'Save';
-        save.onclick = () => {
-            this.emitter.emit('save'); // emit plugin save event
+    // create picker button
+    createButton({
+        type,
+        text
+    }) {
+        let el = document.createElement('div');
+        el.className = `nj-action-button nj-action-${type}`;
+        el.innerText = text;
+        el.onclick = () => {
+            this.emitter.emit(text.toLocaleLowerCase()); // emit plugin save event
         }; // attach click
-        this.element.append(save);
-    }
-
-    // create close
-    createClearButton() {
-        let clear = document.createElement('div');
-        clear.className = 'nj-action-button nj-action-clear';
-        clear.innerText = this.config.texts.clear || 'Clear';
-        clear.onclick = () => {
-            this.emitter.emit('clear'); // emit plugin clear event
-        };
-        this.element.append(clear);
-    }
-
-    // create button
-    createCloseButton() {
-        let close = document.createElement('div');
-        close.className = 'nj-action-button nj-action-close';
-        close.innerText = this.config.texts.close || 'Close';
-        close.onclick = () => {
-            this.emitter.emit('close'); // emit plugin close event
-        };
-        this.element.append(close);
+        this.element.append(el);
     }
 
     // create an on method to mask emitter on
