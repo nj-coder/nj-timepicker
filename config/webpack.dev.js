@@ -5,6 +5,7 @@ module.exports = merge(common, {
   mode: 'development',
   devtool: 'inline-source-map',
   output: {
+    libraryTarget: 'umd',
     filename: 'scripts.js'
   },
   devServer: {
