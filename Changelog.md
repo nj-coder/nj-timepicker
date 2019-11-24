@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file. For transpa
 
 The below format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [Unreleased]
+### Changed
+- updated event emitter to [NJ-Events](https://github.com/nj-coder/nj-events)
+- configure webpack to output umd build
+
 ## [1.3.100] - 2019-11-16
 ### Added
  - enhancement - auto fill value if the target element is an input ([0d00cdd](https://github.com/nj-coder/nj-timepicker/commit/0d00cdd)) closes [#4](https://github.com/nj-coder/nj-timepicker/issues/4)
