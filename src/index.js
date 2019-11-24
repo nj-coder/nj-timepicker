@@ -1,5 +1,5 @@
 import { Background } from './background/background';
-import NanoEvents from 'nanoevents';
+import NJEvents from 'nj-events';
 import { PickerHour as hours } from './hour/hour';
 import { PickerMinute as minutes } from './minutes/minute';
 import { PickerAMPM as ampm } from './ampm/ampm';
@@ -17,7 +17,7 @@ export class NJTimePicker {
             options
         });
 
-        this.emitter = new NanoEvents();
+        this.emitter = new NJEvents(); 
         this.build(); // build the picker
     }
 
@@ -116,8 +116,8 @@ export class NJTimePicker {
 
     // create buttons contianer
     buildButtons() {
-        this.buttons = new buttons(this.config);
-        this.buttons.on('save', () => {
+        this.buttons = new buttons(this.config, this.emitter);
+        this.emitter.on('btn-save', () => {
             // set the value of the target if its an input 
             if (this.targetElement.type == 'text' && this.targetElement.nodeName === 'INPUT') {
                 this.targetElement.value = this.getValue().fullResult;
@@ -125,7 +125,7 @@ export class NJTimePicker {
             this.emitter.emit('save', this.getValue());
             this.hide();
         });
-        this.buttons.on('clear', () => {
+        this.emitter.on('btn-clear', () => {
             this.hours.resetValue(); // resets the hours
             this.minutes.resetValue(); // reset minutes
             if (this.config.format == '12') {
@@ -133,7 +133,7 @@ export class NJTimePicker {
             }
             this.emitter.emit('clear');
         });
-        this.buttons.on('close', () => {
+        this.emitter.on('btn-close', () => {
             this.emitter.emit('close');
             this.hide();
         });
@@ -218,9 +218,4 @@ export class NJTimePicker {
         this.emitter.on(name, value);
     }
 
-}
-
-if (typeof global === 'object' && !global.NJTimePicker) {
-    global.NJTimePicker = NJTimePicker;
-    global.NJTimePicker.version = 'v1.3.100';
 }

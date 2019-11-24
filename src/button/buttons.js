@@ -1,10 +1,8 @@
-import NanoEvents from 'nanoevents';
-
 export class ActionButton {
 
-    constructor(options) {
+    constructor(options, emitter) {
         this.config = options;
-        this.emitter = new NanoEvents();
+        this.emitter = emitter;
     }
 
     // build
@@ -36,13 +34,8 @@ export class ActionButton {
         el.className = `nj-action-button nj-action-${type}`;
         el.innerText = text;
         el.onclick = () => {
-            this.emitter.emit(text.toLocaleLowerCase()); // emit plugin save event
+            this.emitter.emit('btn-' + text.toLocaleLowerCase()); // emit plugin save event
         }; // attach click
         this.element.append(el);
-    }
-
-    // create an on method to mask emitter on
-    on(name, value) {
-        this.emitter.on(name, value);
     }
 }
