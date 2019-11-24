@@ -36,11 +36,12 @@
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
     "gulp-watch": "^5.0.1",
-    "nanoevents": "git+https://github.com/ai/nanoevents.git",
     "node-sass": "^4.12.0",
     "webpack": "^4.39.3",
     "webpack-merge": "^4.2.2",
     "webpack-stream": "^5.2.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "nj-events": "^1.1.100"
+  }
 }
