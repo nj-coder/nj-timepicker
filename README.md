@@ -15,12 +15,26 @@ NJ-TimePicker is a pure JavaScript based timepicker that enables you to select t
 - [License](#license)
 
 ## Installation
-NJ-TimePicker can be installed using the Node Package Manager, [NPM](https://www.npmjs.com/) or including direct link to your project.
-### Using npm
 ```
 npm install --save nj-timepicker
 ```
 
+You can use NJ-TimePicker as an ES6 module as follows:
+
+```javascript
+import NJTimePicker from 'nj-timepicker';
+
+const picker = new NJTimePicker();
+```
+
+Alertnatively you can include the `script.js` script before the closing `</body>` tag and then in your JS create a new instance of NJ-TimePicker as below.
+
+```html
+<script src="path/to/script.js"></script>
+<script>
+    const picker = new NJTimePicker();
+</script>
+```
 ## Usage
 ```js
 let container = document.querySelector('#container');
