@@ -11,7 +11,6 @@ const babel = require('gulp-babel');
 
 // deletes the dist folder
 gulp.task('clean', require('del').bind(null, ['dist']));
-gulp.task('clean-tmp', require('del').bind(null, ['dist/tmp']));
 
 // build css
 gulp.task('styles', function () {
@@ -26,9 +25,9 @@ gulp.task('styles', function () {
 
 // build js
 gulp.task('babel', function () {
-    return gulp.src(['./src/**/*.js'])
+    return gulp.src(['./dist/*.js'])
         .pipe(babel())
-        .pipe(gulp.dest('dist/tmp'));
+        .pipe(gulp.dest('dist/'));
 });
 const webpackDev = require('./config/webpack.dev');
 const webpackProd = require('./config/webpack.prod');
@@ -42,9 +41,8 @@ gulp.task('build-prod', () => {
 // Create a new build in dist folder
 gulp.task('build', gulp.series(
     'clean',
-    'babel',
     gulp.parallel('styles', 'build-dev', 'build-prod'),
-    'clean-tmp'
+    'babel'
 ));
 
 // Watch for changes.
