@@ -22,15 +22,15 @@ npm install --save nj-timepicker
 You can use NJ-TimePicker as an ES6 module as follows:
 
 ```javascript
-import { NJTimePicker } from 'nj-timepicker'; 
+import NJTimePicker from 'nj-timepicker'; 
 
 const picker = new NJTimePicker();
 ```
 
-Alertnatively you can include the `script.js` script before the closing `</body>` tag and then in your JS create a new instance of NJ-TimePicker as below.
+Alertnatively you can include the `njtimepicker.min.js` script before the closing `</body>` tag and then in your JS create a new instance of NJ-TimePicker as below.
 
 ```html
-<script src="path/to/script.js"></script>
+<script src="path/to/njtimepicker.min.js"></script>
 <script>
     const picker = new NJTimePicker();
 </script>
