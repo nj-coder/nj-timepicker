@@ -2,7 +2,11 @@
   "name": "nj-timepicker",
   "version": "1.3.115",
   "description": "A simple, small (8KB) and user-friendly time picker using pure JavaScript",
-  "main": "src/index.js",
+  "main": "dist/njtimepicker.min.js",
+  "module": "dist/njtimepicker.min.mjs",
+  "jsnext:main": "dist/njtimepicker.min.mjs",
+  "browser": "dist/njtimepicker.min.js",
+  "style": "dist/njtimepicker.min.css",
   "scripts": {
     "build": "gulp build",
     "watch": "gulp watch"
@@ -23,29 +27,32 @@
     "mobile-friendly",
     "picker"
   ],
-  "author": "Nidhin Joseph",
+  "author": "Nidhin Joseph <nidhin.joseph1@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/nj-coder/nj-timepicker/issues"
   },
   "homepage": "https://github.com/nj-coder/nj-timepicker#readme",
   "devDependencies": {
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
+    "@babel/core": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
     "del": "^5.1.0",
     "gulp": "^4.0.2",
-    "gulp-babel": "^8.0.0",
+    "gulp-better-rollup": "^4.0.1",
     "gulp-clean-css": "^4.2.0",
     "gulp-concat": "^2.6.1",
+    "gulp-filter": "^6.0.0",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
-    "gulp-watch": "^5.0.1",
-    "node-sass": "^4.12.0",
-    "webpack": "^4.39.3",
-    "webpack-merge": "^4.2.2",
-    "webpack-stream": "^5.2.1"
+    "gulp-size": "^3.0.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-terser": "^1.2.0",
+    "rollup": "^1.27.5",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0"
   },
   "dependencies": {
-    "nj-events": "^1.1.100"
+    "nj-events": "^1.1.101"
   }
 }

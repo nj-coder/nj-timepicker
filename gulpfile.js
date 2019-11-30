@@ -1,49 +1,137 @@
 'use strict';
 
+// ------------------------------------
+// Configs
+// ------------------------------------
+const pkg = require('./package.json');
+const build = require('./build.json');
+
+// ------------------------------------
+// GULP
+// ------------------------------------
 const gulp = require('gulp');
+
+// ------------------------------------
+// JS
+// ------------------------------------
+const terser = require('gulp-terser');
+const filter = require('gulp-filter');
+const rollup = require('gulp-better-rollup');
+const babel = require('rollup-plugin-babel');
+const commonjs = require('rollup-plugin-commonjs');
+const resolve = require('rollup-plugin-node-resolve');
+
+// ------------------------------------
+// CSS
+// ------------------------------------
 const sass = require('gulp-sass');
-const cleanCSS = require('gulp-clean-css');
-const concat = require('gulp-concat');
+const clean = require('gulp-clean-css');
+
+// ------------------------------------
+// Utils
+// ------------------------------------
+const del = require('del');
 const rename = require('gulp-rename');
-const webpack = require('webpack');
-const webpackStream = require('webpack-stream');
-const babel = require('gulp-babel');
+const size = require('gulp-size');
+const concat = require('gulp-concat');
 
-// deletes the dist folder
-gulp.task('clean', require('del').bind(null, ['dist']));
+// ------------------------------------
+// Info from package
+// ------------------------------------
+const { browserslist: browsers, version } = pkg;
 
-// build css
-gulp.task('styles', function () {
-    return gulp.src(['./src/theme.scss', './src/**/*.scss'])
-        .pipe(sass().on('error', sass.logError))
-        .pipe(concat('style.css'))
-        .pipe(gulp.dest('dist'))
-        .pipe(rename('style.min.css'))
-        .pipe(cleanCSS({ compatibility: 'ie8' }))
-        .pipe(gulp.dest('dist'));
+// Task arrays
+const tasks = {
+    css: [],
+    js: [],
+    clean: 'clean',
+};
+
+// Size plugin
+const sizeOptions = { showFiles: true, gzip: true };
+
+// Clean out /dist
+gulp.task(tasks.clean, done => {
+    del(['dist']);
+    done();
 });
 
-// build js
-gulp.task('babel', function () {
-    return gulp.src(['./dist/*.js'])
-        .pipe(babel())
-        .pipe(gulp.dest('dist/'));
-});
-const webpackDev = require('./config/webpack.dev');
-const webpackProd = require('./config/webpack.prod');
-gulp.task('build-dev', () => {
-    return webpackStream(webpackDev, webpack).pipe(gulp.dest('dist'));
-});
-gulp.task('build-prod', () => {
-    return webpackStream(webpackProd, webpack).pipe(gulp.dest('dist'));
+Object.entries(build.js).forEach(([filename, entry]) => {
+    const { dist, formats, namespace, polyfill, src } = entry;
+
+    formats.forEach(format => {
+        const name = `js:${filename}:${format}`;
+        const extension = format === 'es' ? 'mjs' : 'js';
+        tasks.js.push(name);
+        gulp.task(name, (done) => {
+            gulp
+                .src(src)
+                .pipe(
+                    rollup(
+                        {
+                            plugins: [
+                                resolve(),
+                                commonjs(),
+                                babel({
+                                    presets: [
+                                        [
+                                            '@babel/env',
+                                        ],
+                                        // {
+                                        //     // debug: true,
+                                        //     useBuiltIns: polyfill ? 'usage' : false,
+                                        //     corejs: polyfill ? 3 : undefined,
+                                        // },
+                                    ],
+                                    babelrc: false,
+                                    exclude: [/\/core-js\//],
+                                }),
+                            ],
+                        },
+                        {
+                            name: namespace,
+                            format: format,
+                        }
+                    )
+                )
+                .pipe(
+                    rename({
+                        basename: 'njtimepicker',
+                        extname: `.${extension}`,
+                    })
+                )
+                .pipe(gulp.dest(dist))
+                .pipe(filter(`**/*.${extension}`))
+                .pipe(terser())
+                .pipe(rename({ suffix: '.min' }))
+                .pipe(size(sizeOptions))
+                .pipe(gulp.dest(dist))
+                ;
+            done();
+        }
+        );
+    });
 });
 
-// Create a new build in dist folder
-gulp.task('build', gulp.series(
-    'clean',
-    gulp.parallel('styles', 'build-dev', 'build-prod'),
-    'babel'
-));
+// CSS
+Object.entries(build.css).forEach(([filename, entry]) => {
+    const { dist, src } = entry;
+    const name = `css:${filename}`;
+    tasks.css.push(name);
 
-// Watch for changes.
-gulp.task('watch', () => gulp.watch(['./src/*.js', './src/*/*.js', './src/*.scss', './src/*/*.scss'], gulp.series('babel', 'styles', 'build-dev', 'clean-tmp')));
+    gulp.task(name, () =>
+        gulp
+            .src(src)
+            .pipe(sass())
+            .pipe(concat('njtimepicker.css'))
+            .pipe(gulp.dest('dist'))
+            .pipe(rename('njtimepicker.min.css'))
+            .pipe(clean({ compatibility: 'ie8' }))
+            .pipe(gulp.dest(dist))
+    );
+});
+
+// Build all JS
+gulp.task('js', gulp.parallel(...tasks.js));
+
+gulp.task('build', gulp.series(tasks.clean, gulp.parallel(...tasks.js, ...tasks.css)))

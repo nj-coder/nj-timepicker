@@ -1,0 +1,19 @@
+{
+    "js": {
+        "njtimepicker.js": {
+            "src": "src/index.js",
+            "dist": "dist",
+            "formats": [
+                "es",
+                "umd"
+            ],
+            "namespace": "NJTimePicker"
+        }
+    },
+    "css": {
+        "njtimepicker.css": {
+            "src": ["./src/theme.scss", "./src/**/*.scss"],
+            "dist": "dist"
+        }
+    }
+}

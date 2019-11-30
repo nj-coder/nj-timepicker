@@ -6,7 +6,7 @@ import { PickerAMPM as ampm } from './ampm/ampm';
 import { Header } from './header/header';
 import { ActionButton as buttons } from './button/buttons';
 
-export class NJTimePicker {
+export default class NJTimePicker {
 
     constructor(options = {}) {
         // checks for a valid target element
