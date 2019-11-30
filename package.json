@@ -1,6 +1,6 @@
 {
   "name": "nj-timepicker",
-  "version": "1.3.115",
+  "version": "1.3.116",
   "description": "A simple, small (8KB) and user-friendly time picker using pure JavaScript",
   "main": "dist/njtimepicker.min.js",
   "module": "dist/njtimepicker.min.mjs",
@@ -14,9 +14,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nj-coder/nj-timepicker.git"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
   },
   "keywords": [
     "timepicker",
