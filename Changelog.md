@@ -6,7 +6,7 @@ The below format is based on [Keep a Changelog](http://keepachangelog.com/).
 ## [Unreleased]
 ### Changed
 - updated event emitter to [NJ-Events](https://github.com/nj-coder/nj-events)
-- configure webpack to output umd build
+- updated build process to [gulp-better-rollup](https://www.npmjs.com/package/gulp-better-rollup)
 
 ## [1.3.100] - 2019-11-16
 ### Added
