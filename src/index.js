@@ -17,7 +17,9 @@ export default class NJTimePicker {
             options
         });
 
-        this.emitter = new NJEvents(); 
+        this.emitter = new NJEvents();
+        this.pickerVisible = false;
+        this.allowAutoSave = false;
         this.build(); // build the picker
     }
 
@@ -25,6 +27,7 @@ export default class NJTimePicker {
     get defaultConfig() {
         return {
             clickOutsideToClose: true,
+            autoSave: false, // auto save if for the first time
             disabledMinutes: [],
             disabledHours: [],
             format: '12',
@@ -111,7 +114,17 @@ export default class NJTimePicker {
         this.wrapper.append(this.container);
         // attach the picker wrapper to the dom
         document.body.append(this.wrapper);
-        this.emitter.emit('ready'); // emit the plugin ready event
+        setTimeout(() => {
+            this.emitter.emit('ready', {}); // emit the plugin ready event
+        });
+
+        this.emitter.on('selection', () => {
+            if (this.pickerVisible && this.config.autoSave && this.allowAutoSave) {
+                let val = this.getValue();
+                if (val.hours && val.minutes && val.ampm)
+                    this.onSave();
+            }
+        });
     }
 
     // create buttons contianer
@@ -122,8 +135,7 @@ export default class NJTimePicker {
             if (this.targetElement.type == 'text' && this.targetElement.nodeName === 'INPUT') {
                 this.targetElement.value = this.getValue().fullResult;
             }
-            this.emitter.emit('save', this.getValue());
-            this.hide();
+            this.onSave();
         });
         this.emitter.on('btn-clear', () => {
             this.hours.resetValue(); // resets the hours
@@ -143,18 +155,22 @@ export default class NJTimePicker {
     // build individual items
     buildItems() {
         // create hours contianer
-        this.hours = new hours(this.config);
+        this.hours = new hours(this.config, this.emitter);
         this.container.append(this.hours.element);
         // create minutes contianer
-        this.minutes = new minutes(this.config);
+        this.minutes = new minutes(this.config, this.emitter);
         this.container.append(this.minutes.element);
         // create ampm contianer
         if (this.config.format == '12') {
-            this.ampm = new ampm(this.config);
+            this.ampm = new ampm(this.config, this.emitter);
             this.container.append(this.ampm.element);
         }
     }
 
+    onSave() {
+        this.emitter.emit('save', this.getValue());
+        this.hide();
+    }
     // get the picker value
     getValue(key) {
         let result = {
@@ -195,20 +211,26 @@ export default class NJTimePicker {
                 //
             }
         } else if (typeof (input) == 'object') {
-            if (input.key && typeof (input.value) != 'undefined' && this[input.key]) {
-                this[input.key].setValue(input.value.toString().toLowerCase());
+            for (let item in input) {
+                if (input[item] && this[item] && this[item].setValue) {
+                    this[item].setValue(input[item].toString().toLowerCase());
+                }
             }
         }
     }
 
     // shows the picker
     show() {
+        let val = this.getValue();
+        this.allowAutoSave = !(val.hours && val.minutes && val.ampm);
+        this.pickerVisible = true;
         this.wrapper.classList.add('nj-picker-show');
         this.emitter.emit('show'); // emit plugin show event
     }
 
     // hides the picker
     hide() {
+        this.pickerVisible = false;
         this.wrapper.classList.remove('nj-picker-show');
         this.emitter.emit('hide'); // emit the plugin hide event
     }

@@ -2,8 +2,8 @@ import { Base } from '../base/base';
 
 export class PickerMinute extends Base {
 
-    constructor(options) {
-        super(options);
+    constructor(options, emitter) {
+        super(options, emitter);
         super.build({
             type: 'minutes',
             headerText: this.config.texts.minutes

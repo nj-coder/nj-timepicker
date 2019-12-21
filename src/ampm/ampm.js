@@ -2,8 +2,8 @@ import { Base } from '../base/base';
 
 export class PickerAMPM extends Base {
 
-    constructor(options) {
-        super(options);
+    constructor(options, emitter) {
+        super(options, emitter);
         this.config = options;
         this.currentSelection = null;
         this.currentValue = null;

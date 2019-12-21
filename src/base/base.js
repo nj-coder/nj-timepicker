@@ -1,7 +1,8 @@
 export class Base {
 
-    constructor(options) {
+    constructor(options, emitter) {
         this.config = options;
+        this.emitter = emitter;
         this.resetValue();
     }
 
@@ -58,6 +59,7 @@ export class Base {
         item.classList.add('selected');
         this.currentSelection = item;
         this.currentValue = item.getAttribute('data');
+        this.emitter.emit('selection');
     }
 
     // sets the component value

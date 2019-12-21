@@ -189,10 +189,11 @@ var script_min = createCommonjsModule(function (module, exports) {
 var Base =
 /*#__PURE__*/
 function () {
-  function Base(options) {
+  function Base(options, emitter) {
     _classCallCheck(this, Base);
 
     this.config = options;
+    this.emitter = emitter;
     this.resetValue();
   } // build contanier
 
@@ -255,6 +256,7 @@ function () {
       item.classList.add('selected');
       this.currentSelection = item;
       this.currentValue = item.getAttribute('data');
+      this.emitter.emit('selection');
     } // sets the component value
 
   }, {
@@ -292,12 +294,12 @@ var PickerHour =
 function (_Base) {
   _inherits(PickerHour, _Base);
 
-  function PickerHour(options) {
+  function PickerHour(options, emitter) {
     var _this;
 
     _classCallCheck(this, PickerHour);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(PickerHour).call(this, options));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(PickerHour).call(this, options, emitter));
 
     _get(_getPrototypeOf(PickerHour.prototype), "build", _assertThisInitialized(_this)).call(_assertThisInitialized(_this), {
       type: 'hours',
@@ -339,12 +341,12 @@ var PickerMinute =
 function (_Base) {
   _inherits(PickerMinute, _Base);
 
-  function PickerMinute(options) {
+  function PickerMinute(options, emitter) {
     var _this;
 
     _classCallCheck(this, PickerMinute);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(PickerMinute).call(this, options));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(PickerMinute).call(this, options, emitter));
 
     _get(_getPrototypeOf(PickerMinute.prototype), "build", _assertThisInitialized(_this)).call(_assertThisInitialized(_this), {
       type: 'minutes',
@@ -387,12 +389,12 @@ var PickerAMPM =
 function (_Base) {
   _inherits(PickerAMPM, _Base);
 
-  function PickerAMPM(options) {
+  function PickerAMPM(options, emitter) {
     var _this;
 
     _classCallCheck(this, PickerAMPM);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(PickerAMPM).call(this, options));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(PickerAMPM).call(this, options, emitter));
     _this.config = options;
     _this.currentSelection = null;
     _this.currentValue = null;
@@ -528,6 +530,8 @@ function () {
       options: options
     });
     this.emitter = new script_min();
+    this.pickerVisible = false;
+    this.allowAutoSave = false;
     this.build(); // build the picker
   } // plugin default config
 
@@ -571,6 +575,8 @@ function () {
   }, {
     key: "build",
     value: function build() {
+      var _this = this;
+
       // attach the click to show picker
       this.targetElement.addEventListener('click', this.show.bind(this)); // create picker wrapper div
 
@@ -603,43 +609,51 @@ function () {
       this.wrapper.append(this.container); // attach the picker wrapper to the dom
 
       document.body.append(this.wrapper);
-      this.emitter.emit('ready'); // emit the plugin ready event
+      setTimeout(function () {
+        _this.emitter.emit('ready', {}); // emit the plugin ready event
+
+      });
+      this.emitter.on('selection', function () {
+        if (_this.pickerVisible && _this.config.autoSave && _this.allowAutoSave) {
+          var val = _this.getValue();
+
+          if (val.hours && val.minutes && val.ampm) _this.onSave();
+        }
+      });
     } // create buttons contianer
 
   }, {
     key: "buildButtons",
     value: function buildButtons() {
-      var _this = this;
+      var _this2 = this;
 
       this.buttons = new ActionButton(this.config, this.emitter);
       this.emitter.on('btn-save', function () {
         // set the value of the target if its an input 
-        if (_this.targetElement.type == 'text' && _this.targetElement.nodeName === 'INPUT') {
-          _this.targetElement.value = _this.getValue().fullResult;
+        if (_this2.targetElement.type == 'text' && _this2.targetElement.nodeName === 'INPUT') {
+          _this2.targetElement.value = _this2.getValue().fullResult;
         }
 
-        _this.emitter.emit('save', _this.getValue());
-
-        _this.hide();
+        _this2.onSave();
       });
       this.emitter.on('btn-clear', function () {
-        _this.hours.resetValue(); // resets the hours
+        _this2.hours.resetValue(); // resets the hours
 
 
-        _this.minutes.resetValue(); // reset minutes
+        _this2.minutes.resetValue(); // reset minutes
 
 
-        if (_this.config.format == '12') {
-          _this.ampm.resetValue(); // resets am-pm
+        if (_this2.config.format == '12') {
+          _this2.ampm.resetValue(); // resets am-pm
 
         }
 
-        _this.emitter.emit('clear');
+        _this2.emitter.emit('clear');
       });
       this.emitter.on('btn-close', function () {
-        _this.emitter.emit('close');
+        _this2.emitter.emit('close');
 
-        _this.hide();
+        _this2.hide();
       });
       this.container.append(this.buttons.build(this.config));
     } // build individual items
@@ -648,16 +662,22 @@ function () {
     key: "buildItems",
     value: function buildItems() {
       // create hours contianer
-      this.hours = new PickerHour(this.config);
+      this.hours = new PickerHour(this.config, this.emitter);
       this.container.append(this.hours.element); // create minutes contianer
 
-      this.minutes = new PickerMinute(this.config);
+      this.minutes = new PickerMinute(this.config, this.emitter);
       this.container.append(this.minutes.element); // create ampm contianer
 
       if (this.config.format == '12') {
-        this.ampm = new PickerAMPM(this.config);
+        this.ampm = new PickerAMPM(this.config, this.emitter);
         this.container.append(this.ampm.element);
       }
+    }
+  }, {
+    key: "onSave",
+    value: function onSave() {
+      this.emitter.emit('save', this.getValue());
+      this.hide();
     } // get the picker value
 
   }, {
@@ -703,8 +723,10 @@ function () {
         } catch (e) {//
         }
       } else if (_typeof(input) == 'object') {
-        if (input.key && typeof input.value != 'undefined' && this[input.key]) {
-          this[input.key].setValue(input.value.toString().toLowerCase());
+        for (var item in input) {
+          if (input[item] && this[item] && this[item].setValue) {
+            this[item].setValue(input[item].toString().toLowerCase());
+          }
         }
       }
     } // shows the picker
@@ -712,6 +734,9 @@ function () {
   }, {
     key: "show",
     value: function show() {
+      var val = this.getValue();
+      this.allowAutoSave = !(val.hours && val.minutes && val.ampm);
+      this.pickerVisible = true;
       this.wrapper.classList.add('nj-picker-show');
       this.emitter.emit('show'); // emit plugin show event
     } // hides the picker
@@ -719,6 +744,7 @@ function () {
   }, {
     key: "hide",
     value: function hide() {
+      this.pickerVisible = false;
       this.wrapper.classList.remove('nj-picker-show');
       this.emitter.emit('hide'); // emit the plugin hide event
     } // create an on method to mask emitter on
@@ -733,6 +759,8 @@ function () {
     get: function get() {
       return {
         clickOutsideToClose: true,
+        autoSave: false,
+        // auto save if for the first time
         disabledMinutes: [],
         disabledHours: [],
         format: '12',
