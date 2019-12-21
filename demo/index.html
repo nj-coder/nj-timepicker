@@ -69,6 +69,7 @@
             let format_12 = document.querySelector('#format_12');
             var format_12_picker = new NJTimePicker({
                 targetID: 'format_12',
+                autoSave: true,
                 texts: {
                     header: '12-Hour Picker'
                 }
@@ -76,6 +77,14 @@
             format_12_picker.on('save', function (data) {
                 if (data.fullResult)
                     format_12.textContent = data.fullResult;
+            });
+            format_12_picker.on('ready', function (data) {
+                return
+                format_12_picker.setValue({
+                    hours: 12,
+                    minutes: 45,
+                    ampm: 'am'
+                });
             });
 
             let format_24 = document.querySelector('#format_24');
