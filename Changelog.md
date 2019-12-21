@@ -4,9 +4,14 @@ All notable changes to this project will be documented in this file. For transpa
 The below format is based on [Keep a Changelog](http://keepachangelog.com/).
 
 ## [Unreleased]
+### Added
+- enhancement - addded `autoSave` config to close the picker after selection ([4a8e091
+](https://github.com/nj-coder/nj-timepicker/commit/4a8e091
+)) closes [#7](https://github.com/nj-coder/nj-timepicker/issues/7)
 ### Changed
 - updated event emitter to [NJ-Events](https://github.com/nj-coder/nj-events)
 - updated build process to [gulp-better-rollup](https://www.npmjs.com/package/gulp-better-rollup)
+- `setValue()` method to accept object, instead of indivual key-value pair
 
 ## [1.3.100] - 2019-11-16
 ### Added
