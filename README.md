@@ -59,7 +59,7 @@ The plugin ships with various configuration and events that can be used to meet 
 | id                 | String             | ```alphanumeric string```| a unique ID for the picker |
 | format             | ```12 \| 24```     | ```12```                 | picker display format |
 | clickOutsideToClose| ```true \| false```| ```true```               | to close the picker when clicked outside |
-| autosave           | ```true \| false```| ```false```               | save when all values are selected |
+| autoSave           | ```true \| false```| ```false```               | save when all values are selected |
 | minutes            | `array`            | `[0, 15, 30, 45]`        | a list of minutes |
 | disabledHours      | `array`            | `[]`                     | a list of disabled Hours |
 | disabledMinutes    | `array`            | `[]`                     | a list of disabled Minutes |
