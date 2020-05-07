@@ -503,7 +503,7 @@ function () {
       el.innerText = text;
 
       el.onclick = function () {
-        _this.emitter.emit('btn-' + text.toLocaleLowerCase()); // emit plugin save event
+        _this.emitter.emit("btn-".concat(type)); // emit plugin save event
 
       }; // attach click
 

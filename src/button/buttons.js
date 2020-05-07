@@ -34,7 +34,7 @@ export class ActionButton {
         el.className = `nj-action-button nj-action-${type}`;
         el.innerText = text;
         el.onclick = () => {
-            this.emitter.emit('btn-' + text.toLocaleLowerCase()); // emit plugin save event
+            this.emitter.emit(`btn-${type}`); // emit plugin save event
         }; // attach click
         this.element.append(el);
     }
