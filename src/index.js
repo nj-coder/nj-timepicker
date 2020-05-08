@@ -240,4 +240,8 @@ export default class NJTimePicker {
         this.emitter.on(name, value);
     }
 
+    static get version() { 
+        return '1.3.118';
+    }
+
 }
