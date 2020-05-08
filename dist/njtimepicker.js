@@ -5,6 +5,8 @@
 }(this, (function () { 'use strict';
 
   function _typeof(obj) {
+    "@babel/helpers - typeof";
+
     if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
       _typeof = function (obj) {
         return typeof obj;
@@ -71,6 +73,19 @@
     return _setPrototypeOf(o, p);
   }
 
+  function _isNativeReflectConstruct() {
+    if (typeof Reflect === "undefined" || !Reflect.construct) return false;
+    if (Reflect.construct.sham) return false;
+    if (typeof Proxy === "function") return true;
+
+    try {
+      Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
   function _assertThisInitialized(self) {
     if (self === void 0) {
       throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -85,6 +100,25 @@
     }
 
     return _assertThisInitialized(self);
+  }
+
+  function _createSuper(Derived) {
+    var hasNativeReflectConstruct = _isNativeReflectConstruct();
+
+    return function () {
+      var Super = _getPrototypeOf(Derived),
+          result;
+
+      if (hasNativeReflectConstruct) {
+        var NewTarget = _getPrototypeOf(this).constructor;
+
+        result = Reflect.construct(Super, arguments, NewTarget);
+      } else {
+        result = Super.apply(this, arguments);
+      }
+
+      return _possibleConstructorReturn(this, result);
+    };
   }
 
   function _superPropBase(object, property) {
@@ -136,65 +170,60 @@
        module.exports = t() ;
     }(commonjsGlobal, function () {
 
-      return (
-        /*#__PURE__*/
-        function () {
-          function _class() {
-            _classCallCheck(this, _class);
+      return /*#__PURE__*/function () {
+        function _class() {
+          _classCallCheck(this, _class);
 
-            this.events = {}, this.listeners = {};
+          this.events = {}, this.listeners = {};
+        }
+
+        _createClass(_class, [{
+          key: "on",
+          value: function on(e, t, s) {
+            if ("function" != typeof t) throw "invalid listener.";
+            var i = s || Math.random().toString(36).substring(7);
+            return (this.events[e] = this.events[e] || []).push(i), this.listeners[i] = {
+              cb: t,
+              ev: e
+            }, i;
           }
+        }, {
+          key: "once",
+          value: function once(e, t, s) {
+            var i = this.on(e, t, s);
+            this.listeners[i].once = !0;
+          }
+        }, {
+          key: "off",
+          value: function off(e) {
+            var _this = this;
 
-          _createClass(_class, [{
-            key: "on",
-            value: function on(e, t, s) {
-              if ("function" != typeof t) throw "invalid listener.";
-              var i = s || Math.random().toString(36).substring(7);
-              return (this.events[e] = this.events[e] || []).push(i), this.listeners[i] = {
-                cb: t,
-                ev: e
-              }, i;
+            if (this.events[e]) this.events[e].forEach(function (e) {
+              delete _this.listeners[e];
+            }), delete this.events[e];else if (this.listeners[e]) {
+              var t = this.listeners[e];
+              this.events[t.ev].splice(e, 1), delete this.listeners[e];
             }
-          }, {
-            key: "once",
-            value: function once(e, t, s) {
-              var i = this.on(e, t, s);
-              this.listeners[i].once = !0;
-            }
-          }, {
-            key: "off",
-            value: function off(e) {
-              var _this = this;
+          }
+        }, {
+          key: "emit",
+          value: function emit(e) {
+            var _this2 = this;
 
-              if (this.events[e]) this.events[e].forEach(function (e) {
-                delete _this.listeners[e];
-              }), delete this.events[e];else if (this.listeners[e]) {
-                var t = this.listeners[e];
-                this.events[t.ev].splice(e, 1), delete this.listeners[e];
-              }
-            }
-          }, {
-            key: "emit",
-            value: function emit(e) {
-              var _this2 = this;
+            var t = [].slice.call(arguments, 1);
+            (this.events[e] || []).forEach(function (s) {
+              var i = _this2.listeners[s];
+              i.cb(1 == t.length ? t[0] : t), i.once && _this2.off(e);
+            });
+          }
+        }]);
 
-              var t = [].slice.call(arguments, 1);
-              (this.events[e] || []).forEach(function (s) {
-                var i = _this2.listeners[s];
-                i.cb(1 == t.length ? t[0] : t), i.once && _this2.off(e);
-              });
-            }
-          }]);
-
-          return _class;
-        }()
-      );
+        return _class;
+      }();
     });
   });
 
-  var Base =
-  /*#__PURE__*/
-  function () {
+  var Base = /*#__PURE__*/function () {
     function Base(options, emitter) {
       _classCallCheck(this, Base);
 
@@ -295,19 +324,19 @@
     return Base;
   }();
 
-  var PickerHour =
-  /*#__PURE__*/
-  function (_Base) {
+  var PickerHour = /*#__PURE__*/function (_Base) {
     _inherits(PickerHour, _Base);
 
+    var _super = _createSuper(PickerHour);
+
     function PickerHour(options, emitter) {
-      var _this;
+      var _thisSuper, _this;
 
       _classCallCheck(this, PickerHour);
 
-      _this = _possibleConstructorReturn(this, _getPrototypeOf(PickerHour).call(this, options, emitter));
+      _this = _super.call(this, options, emitter);
 
-      _get(_getPrototypeOf(PickerHour.prototype), "build", _assertThisInitialized(_this)).call(_assertThisInitialized(_this), {
+      _get((_thisSuper = _assertThisInitialized(_this), _getPrototypeOf(PickerHour.prototype)), "build", _thisSuper).call(_thisSuper, {
         type: 'hours',
         headerText: _this.config.texts.hours
       });
@@ -342,19 +371,19 @@
     return PickerHour;
   }(Base);
 
-  var PickerMinute =
-  /*#__PURE__*/
-  function (_Base) {
+  var PickerMinute = /*#__PURE__*/function (_Base) {
     _inherits(PickerMinute, _Base);
 
+    var _super = _createSuper(PickerMinute);
+
     function PickerMinute(options, emitter) {
-      var _this;
+      var _thisSuper, _this;
 
       _classCallCheck(this, PickerMinute);
 
-      _this = _possibleConstructorReturn(this, _getPrototypeOf(PickerMinute).call(this, options, emitter));
+      _this = _super.call(this, options, emitter);
 
-      _get(_getPrototypeOf(PickerMinute.prototype), "build", _assertThisInitialized(_this)).call(_assertThisInitialized(_this), {
+      _get((_thisSuper = _assertThisInitialized(_this), _getPrototypeOf(PickerMinute.prototype)), "build", _thisSuper).call(_thisSuper, {
         type: 'minutes',
         headerText: _this.config.texts.minutes
       });
@@ -390,22 +419,22 @@
     return PickerMinute;
   }(Base);
 
-  var PickerAMPM =
-  /*#__PURE__*/
-  function (_Base) {
+  var PickerAMPM = /*#__PURE__*/function (_Base) {
     _inherits(PickerAMPM, _Base);
 
+    var _super = _createSuper(PickerAMPM);
+
     function PickerAMPM(options, emitter) {
-      var _this;
+      var _thisSuper, _this;
 
       _classCallCheck(this, PickerAMPM);
 
-      _this = _possibleConstructorReturn(this, _getPrototypeOf(PickerAMPM).call(this, options, emitter));
+      _this = _super.call(this, options, emitter);
       _this.config = options;
       _this.currentSelection = null;
       _this.currentValue = null;
 
-      _get(_getPrototypeOf(PickerAMPM.prototype), "build", _assertThisInitialized(_this)).call(_assertThisInitialized(_this), {
+      _get((_thisSuper = _assertThisInitialized(_this), _getPrototypeOf(PickerAMPM.prototype)), "build", _thisSuper).call(_thisSuper, {
         type: 'ampm',
         headerText: _this.config.texts.ampm || 'AM/PM'
       });
@@ -439,9 +468,7 @@
     return PickerAMPM;
   }(Base);
 
-  var Header =
-  /*#__PURE__*/
-  function () {
+  var Header = /*#__PURE__*/function () {
     function Header(options) {
       _classCallCheck(this, Header);
 
@@ -466,9 +493,7 @@
     return Header;
   }();
 
-  var ActionButton =
-  /*#__PURE__*/
-  function () {
+  var ActionButton = /*#__PURE__*/function () {
     function ActionButton(options, emitter) {
       _classCallCheck(this, ActionButton);
 
@@ -521,9 +546,7 @@
     return ActionButton;
   }();
 
-  var NJTimePicker =
-  /*#__PURE__*/
-  function () {
+  var NJTimePicker = /*#__PURE__*/function () {
     function NJTimePicker() {
       var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
@@ -785,6 +808,11 @@
           targetEl: null,
           targetID: null
         };
+      }
+    }], [{
+      key: "version",
+      get: function get() {
+        return '1.3.118';
       }
     }]);
 
